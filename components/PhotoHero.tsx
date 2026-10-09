@@ -108,7 +108,7 @@ export default function PhotoHero() {
             <p className="eyebrow">Limitless Next Generation</p>
           </Rise>
           <Rise mounted={mounted} delay={550}>
-            <h1 className="display mt-5 text-6xl leading-[0.95] md:text-8xl">
+            <h1 className="display mt-5 text-[clamp(2.6rem,11vw,6rem)] leading-[0.95]">
               Limitless
               <br />
               Next
