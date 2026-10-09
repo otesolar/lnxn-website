@@ -1,0 +1,545 @@
+[
+ {
+  "id": 12603,
+  "name": "LNXN Core Identity Hoodie \u2013 Men\u2019s",
+  "slug": "lnxn-core-identity-hoodie-mens",
+  "price": 45.99,
+  "regular_price": 45.99,
+  "on_sale": false,
+  "categories": [],
+  "images": [
+   "/products/lnxn-core-identity-hoodie-mens-0.png",
+   "/products/lnxn-core-identity-hoodie-mens-1.png",
+   "/products/lnxn-core-identity-hoodie-mens-2.png",
+   "/products/lnxn-core-identity-hoodie-mens-3.png",
+   "/products/lnxn-core-identity-hoodie-mens-4.png",
+   "/products/lnxn-core-identity-hoodie-mens-5.png",
+   "/products/lnxn-core-identity-hoodie-mens-6.png",
+   "/products/lnxn-core-identity-hoodie-mens-7.png",
+   "/products/lnxn-core-identity-hoodie-mens-8.png",
+   "/products/lnxn-core-identity-hoodie-mens-9.png",
+   "/products/lnxn-core-identity-hoodie-mens-10.png",
+   "/products/lnxn-core-identity-hoodie-mens-11.png",
+   "/products/lnxn-core-identity-hoodie-mens-12.png"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/men-men/lnxn-core-identity-hoodie-mens/",
+  "image_count": 13
+ },
+ {
+  "id": 12542,
+  "name": "LNXN Core Identity Hoodie \u2013 Women\u2019s",
+  "slug": "lnxn-core-identity-hoodie-womens-edition",
+  "price": 45.99,
+  "regular_price": 45.99,
+  "on_sale": false,
+  "categories": [
+   "WOMEN"
+  ],
+  "images": [
+   "/products/lnxn-core-identity-hoodie-womens-edition-0.png",
+   "/products/lnxn-core-identity-hoodie-womens-edition-1.png",
+   "/products/lnxn-core-identity-hoodie-womens-edition-2.png",
+   "/products/lnxn-core-identity-hoodie-womens-edition-3.png",
+   "/products/lnxn-core-identity-hoodie-womens-edition-4.png",
+   "/products/lnxn-core-identity-hoodie-womens-edition-5.png",
+   "/products/lnxn-core-identity-hoodie-womens-edition-6.png",
+   "/products/lnxn-core-identity-hoodie-womens-edition-7.jpg",
+   "/products/lnxn-core-identity-hoodie-womens-edition-8.jpg",
+   "/products/lnxn-core-identity-hoodie-womens-edition-9.jpg",
+   "/products/lnxn-core-identity-hoodie-womens-edition-10.jpg",
+   "/products/lnxn-core-identity-hoodie-womens-edition-11.jpg",
+   "/products/lnxn-core-identity-hoodie-womens-edition-12.jpg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/women/lnxn-core-identity-hoodie-womens-edition/",
+  "image_count": 13
+ },
+ {
+  "id": 11876,
+  "name": "LNXN Heritage Crew \u2013 Men\u2019s",
+  "slug": "lnxn-heritage-crew-mens",
+  "price": 38.99,
+  "regular_price": 38.99,
+  "on_sale": false,
+  "categories": [],
+  "images": [
+   "/products/lnxn-heritage-crew-mens-0.png",
+   "/products/lnxn-heritage-crew-mens-1.png",
+   "/products/lnxn-heritage-crew-mens-2.png",
+   "/products/lnxn-heritage-crew-mens-3.png",
+   "/products/lnxn-heritage-crew-mens-4.png",
+   "/products/lnxn-heritage-crew-mens-5.png",
+   "/products/lnxn-heritage-crew-mens-6.png"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/men-men/lnxn-heritage-crew-mens/",
+  "image_count": 7
+ },
+ {
+  "id": 11817,
+  "name": "LNXN Core Tee \u2013 Men\u2019s",
+  "slug": "lnxn-core-tee-mens",
+  "price": 24.99,
+  "regular_price": 24.99,
+  "on_sale": false,
+  "categories": [],
+  "images": [
+   "/products/lnxn-core-tee-mens-0.png",
+   "/products/lnxn-core-tee-mens-1.png",
+   "/products/lnxn-core-tee-mens-2.png",
+   "/products/lnxn-core-tee-mens-3.png",
+   "/products/lnxn-core-tee-mens-4.png",
+   "/products/lnxn-core-tee-mens-5.png",
+   "/products/lnxn-core-tee-mens-6.png",
+   "/products/lnxn-core-tee-mens-7.jpeg",
+   "/products/lnxn-core-tee-mens-8.jpeg",
+   "/products/lnxn-core-tee-mens-9.jpeg",
+   "/products/lnxn-core-tee-mens-10.jpeg",
+   "/products/lnxn-core-tee-mens-11.jpeg",
+   "/products/lnxn-core-tee-mens-12.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/men-men/lnxn-core-tee-mens/",
+  "image_count": 13
+ },
+ {
+  "id": 11694,
+  "name": "LNXN Heritage Tee \u2013 Men\u2019s",
+  "slug": "men-lnxn-heritage-tee",
+  "price": 24.99,
+  "regular_price": 24.99,
+  "on_sale": false,
+  "categories": [],
+  "images": [
+   "/products/men-lnxn-heritage-tee-0.png",
+   "/products/men-lnxn-heritage-tee-1.png",
+   "/products/men-lnxn-heritage-tee-2.png",
+   "/products/men-lnxn-heritage-tee-3.png",
+   "/products/men-lnxn-heritage-tee-4.png",
+   "/products/men-lnxn-heritage-tee-5.png",
+   "/products/men-lnxn-heritage-tee-6.png",
+   "/products/men-lnxn-heritage-tee-7.jpeg",
+   "/products/men-lnxn-heritage-tee-8.jpeg",
+   "/products/men-lnxn-heritage-tee-9.jpeg",
+   "/products/men-lnxn-heritage-tee-10.jpeg",
+   "/products/men-lnxn-heritage-tee-11.jpeg",
+   "/products/men-lnxn-heritage-tee-12.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/men-men/men-lnxn-heritage-tee/",
+  "image_count": 13
+ },
+ {
+  "id": 11638,
+  "name": "LNXN Core Hoodie \u2013 Men\u2019s",
+  "slug": "men-lnxn-core-hoodie",
+  "price": 45.99,
+  "regular_price": 45.99,
+  "on_sale": false,
+  "categories": [],
+  "images": [
+   "/products/men-lnxn-core-hoodie-0.png",
+   "/products/men-lnxn-core-hoodie-1.png",
+   "/products/men-lnxn-core-hoodie-2.png",
+   "/products/men-lnxn-core-hoodie-3.png",
+   "/products/men-lnxn-core-hoodie-4.png",
+   "/products/men-lnxn-core-hoodie-5.png",
+   "/products/men-lnxn-core-hoodie-6.png",
+   "/products/men-lnxn-core-hoodie-7.jpeg",
+   "/products/men-lnxn-core-hoodie-8.jpeg",
+   "/products/men-lnxn-core-hoodie-9.jpeg",
+   "/products/men-lnxn-core-hoodie-10.jpeg",
+   "/products/men-lnxn-core-hoodie-11.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/men-men/men-lnxn-core-hoodie/",
+  "image_count": 12
+ },
+ {
+  "id": 11578,
+  "name": "LNXN Heritage Hoodie \u2013 Men\u2019s",
+  "slug": "men-lnxn-heritage-hoodie",
+  "price": 45.99,
+  "regular_price": 45.99,
+  "on_sale": false,
+  "categories": [],
+  "images": [
+   "/products/men-lnxn-heritage-hoodie-0.png",
+   "/products/men-lnxn-heritage-hoodie-1.png",
+   "/products/men-lnxn-heritage-hoodie-2.png",
+   "/products/men-lnxn-heritage-hoodie-3.png",
+   "/products/men-lnxn-heritage-hoodie-4.png",
+   "/products/men-lnxn-heritage-hoodie-5.png",
+   "/products/men-lnxn-heritage-hoodie-6.png"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/men-men/men-lnxn-heritage-hoodie/",
+  "image_count": 7
+ },
+ {
+  "id": 11525,
+  "name": "LNXN Core Crew \u2013 Men\u2019s",
+  "slug": "men-lnxn-core-crew",
+  "price": 38.99,
+  "regular_price": 38.99,
+  "on_sale": false,
+  "categories": [],
+  "images": [
+   "/products/men-lnxn-core-crew-0.png",
+   "/products/men-lnxn-core-crew-1.png",
+   "/products/men-lnxn-core-crew-2.png",
+   "/products/men-lnxn-core-crew-3.png",
+   "/products/men-lnxn-core-crew-4.png",
+   "/products/men-lnxn-core-crew-5.png",
+   "/products/men-lnxn-core-crew-6.png",
+   "/products/men-lnxn-core-crew-7.jpeg",
+   "/products/men-lnxn-core-crew-8.jpeg",
+   "/products/men-lnxn-core-crew-9.jpeg",
+   "/products/men-lnxn-core-crew-10.jpeg",
+   "/products/men-lnxn-core-crew-11.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/men-men/men-lnxn-core-crew/",
+  "image_count": 12
+ },
+ {
+  "id": 11233,
+  "name": "LNXN Core Crew \u2013 Women\u2019s",
+  "slug": "lnxn-core-crew",
+  "price": 38.99,
+  "regular_price": 38.99,
+  "on_sale": false,
+  "categories": [
+   "WOMEN"
+  ],
+  "images": [
+   "/products/lnxn-core-crew-0.png",
+   "/products/lnxn-core-crew-1.png",
+   "/products/lnxn-core-crew-2.png",
+   "/products/lnxn-core-crew-3.png",
+   "/products/lnxn-core-crew-4.png",
+   "/products/lnxn-core-crew-5.png",
+   "/products/lnxn-core-crew-6.png",
+   "/products/lnxn-core-crew-7.jpeg",
+   "/products/lnxn-core-crew-8.jpeg",
+   "/products/lnxn-core-crew-9.jpeg",
+   "/products/lnxn-core-crew-10.jpeg",
+   "/products/lnxn-core-crew-11.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/women/lnxn-core-crew/",
+  "image_count": 12
+ },
+ {
+  "id": 11182,
+  "name": "LNXN Heritage Hoodie \u2013 Women\u2019s",
+  "slug": "lnxn-heritage-hoodie",
+  "price": 45.99,
+  "regular_price": 45.99,
+  "on_sale": false,
+  "categories": [
+   "WOMEN"
+  ],
+  "images": [
+   "/products/lnxn-heritage-hoodie-0.png",
+   "/products/lnxn-heritage-hoodie-1.png",
+   "/products/lnxn-heritage-hoodie-2.png",
+   "/products/lnxn-heritage-hoodie-3.png",
+   "/products/lnxn-heritage-hoodie-4.png",
+   "/products/lnxn-heritage-hoodie-5.png",
+   "/products/lnxn-heritage-hoodie-6.png",
+   "/products/lnxn-heritage-hoodie-7.jpg",
+   "/products/lnxn-heritage-hoodie-8.png",
+   "/products/lnxn-heritage-hoodie-9.png",
+   "/products/lnxn-heritage-hoodie-10.png",
+   "/products/lnxn-heritage-hoodie-11.jpg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/women/lnxn-heritage-hoodie/",
+  "image_count": 12
+ },
+ {
+  "id": 11129,
+  "name": "LNXN Core Hoodie \u2013 Women\u2019s",
+  "slug": "lnxn-core-hoodie",
+  "price": 45.99,
+  "regular_price": 45.99,
+  "on_sale": false,
+  "categories": [
+   "WOMEN"
+  ],
+  "images": [
+   "/products/lnxn-core-hoodie-0.png",
+   "/products/lnxn-core-hoodie-1.png",
+   "/products/lnxn-core-hoodie-2.png",
+   "/products/lnxn-core-hoodie-3.png",
+   "/products/lnxn-core-hoodie-4.png",
+   "/products/lnxn-core-hoodie-5.png",
+   "/products/lnxn-core-hoodie-6.png",
+   "/products/lnxn-core-hoodie-7.jpeg",
+   "/products/lnxn-core-hoodie-8.jpeg",
+   "/products/lnxn-core-hoodie-9.jpeg",
+   "/products/lnxn-core-hoodie-10.jpeg",
+   "/products/lnxn-core-hoodie-11.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/women/lnxn-core-hoodie/",
+  "image_count": 12
+ },
+ {
+  "id": 11076,
+  "name": "LNXN Heritage Tee \u2013 Women\u2019s",
+  "slug": "lnxn-heritage-tee",
+  "price": 24.99,
+  "regular_price": 24.99,
+  "on_sale": false,
+  "categories": [
+   "WOMEN"
+  ],
+  "images": [
+   "/products/lnxn-heritage-tee-0.png",
+   "/products/lnxn-heritage-tee-1.png",
+   "/products/lnxn-heritage-tee-2.png",
+   "/products/lnxn-heritage-tee-3.png",
+   "/products/lnxn-heritage-tee-4.png",
+   "/products/lnxn-heritage-tee-5.png",
+   "/products/lnxn-heritage-tee-6.png",
+   "/products/lnxn-heritage-tee-7.jpeg",
+   "/products/lnxn-heritage-tee-8.jpeg",
+   "/products/lnxn-heritage-tee-9.jpeg",
+   "/products/lnxn-heritage-tee-10.jpeg",
+   "/products/lnxn-heritage-tee-11.jpeg",
+   "/products/lnxn-heritage-tee-12.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/women/lnxn-heritage-tee/",
+  "image_count": 13
+ },
+ {
+  "id": 11025,
+  "name": "LNXN Core Tee \u2013 Women\u2019s",
+  "slug": "lnxn-core-tee",
+  "price": 24.99,
+  "regular_price": 24.99,
+  "on_sale": false,
+  "categories": [
+   "WOMEN"
+  ],
+  "images": [
+   "/products/lnxn-core-tee-0.png",
+   "/products/lnxn-core-tee-1.png",
+   "/products/lnxn-core-tee-2.png",
+   "/products/lnxn-core-tee-3.png",
+   "/products/lnxn-core-tee-4.png",
+   "/products/lnxn-core-tee-5.png",
+   "/products/lnxn-core-tee-6.png",
+   "/products/lnxn-core-tee-7.jpeg",
+   "/products/lnxn-core-tee-8.jpeg",
+   "/products/lnxn-core-tee-9.jpeg",
+   "/products/lnxn-core-tee-10.jpeg",
+   "/products/lnxn-core-tee-11.jpeg",
+   "/products/lnxn-core-tee-12.jpeg",
+   "/products/lnxn-core-tee-13.jpeg",
+   "/products/lnxn-core-tee-14.jpeg",
+   "/products/lnxn-core-tee-15.png"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/women/lnxn-core-tee/",
+  "image_count": 16
+ },
+ {
+  "id": 11011,
+  "name": "LNXN Heritage Cropped Hoodie \u2013 Women\u2019s",
+  "slug": "lnxn-heritage-cropped-hoodie",
+  "price": 52.0,
+  "regular_price": 52.0,
+  "on_sale": false,
+  "categories": [
+   "WOMEN"
+  ],
+  "images": [
+   "/products/lnxn-heritage-cropped-hoodie-0.png",
+   "/products/lnxn-heritage-cropped-hoodie-1.png",
+   "/products/lnxn-heritage-cropped-hoodie-2.png",
+   "/products/lnxn-heritage-cropped-hoodie-3.png",
+   "/products/lnxn-heritage-cropped-hoodie-4.jpeg",
+   "/products/lnxn-heritage-cropped-hoodie-5.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/women/lnxn-heritage-cropped-hoodie/",
+  "image_count": 6
+ },
+ {
+  "id": 10959,
+  "name": "LNXN Core Tee \u2013 Kid\u2019s",
+  "slug": "lnxn-core-tee-kids",
+  "price": 22.99,
+  "regular_price": 22.99,
+  "on_sale": false,
+  "categories": [
+   "KIDS"
+  ],
+  "images": [
+   "/products/lnxn-core-tee-kids-0.png",
+   "/products/lnxn-core-tee-kids-1.png",
+   "/products/lnxn-core-tee-kids-2.png",
+   "/products/lnxn-core-tee-kids-3.png",
+   "/products/lnxn-core-tee-kids-4.png",
+   "/products/lnxn-core-tee-kids-5.png",
+   "/products/lnxn-core-tee-kids-6.jpeg",
+   "/products/lnxn-core-tee-kids-7.jpeg",
+   "/products/lnxn-core-tee-kids-8.jpeg",
+   "/products/lnxn-core-tee-kids-9.jpeg",
+   "/products/lnxn-core-tee-kids-10.jpeg",
+   "/products/lnxn-core-tee-kids-11.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/kids/lnxn-core-tee-kids/",
+  "image_count": 12
+ },
+ {
+  "id": 10926,
+  "name": "LNXN Heritage Tee \u2013 Kid\u2019s",
+  "slug": "lnxn-heritage-tee-kids",
+  "price": 22.99,
+  "regular_price": 22.99,
+  "on_sale": false,
+  "categories": [
+   "KIDS"
+  ],
+  "images": [
+   "/products/lnxn-heritage-tee-kids-0.png",
+   "/products/lnxn-heritage-tee-kids-1.png",
+   "/products/lnxn-heritage-tee-kids-2.png",
+   "/products/lnxn-heritage-tee-kids-3.png",
+   "/products/lnxn-heritage-tee-kids-4.png",
+   "/products/lnxn-heritage-tee-kids-5.jpeg",
+   "/products/lnxn-heritage-tee-kids-6.jpeg",
+   "/products/lnxn-heritage-tee-kids-7.jpeg",
+   "/products/lnxn-heritage-tee-kids-8.jpeg",
+   "/products/lnxn-heritage-tee-kids-9.jpeg",
+   "/products/lnxn-heritage-tee-kids-10.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/kids/lnxn-heritage-tee-kids/",
+  "image_count": 11
+ },
+ {
+  "id": 10900,
+  "name": "LNXN Heritage Hoodie \u2013 Kid\u2019s",
+  "slug": "lnxn-heritage-kids-hoodie",
+  "price": 39.52,
+  "regular_price": 39.52,
+  "on_sale": false,
+  "categories": [
+   "KIDS"
+  ],
+  "images": [
+   "/products/lnxn-heritage-kids-hoodie-0.png",
+   "/products/lnxn-heritage-kids-hoodie-1.png",
+   "/products/lnxn-heritage-kids-hoodie-2.png",
+   "/products/lnxn-heritage-kids-hoodie-3.png",
+   "/products/lnxn-heritage-kids-hoodie-4.png",
+   "/products/lnxn-heritage-kids-hoodie-5.png",
+   "/products/lnxn-heritage-kids-hoodie-6.jpeg",
+   "/products/lnxn-heritage-kids-hoodie-7.jpeg",
+   "/products/lnxn-heritage-kids-hoodie-8.jpeg",
+   "/products/lnxn-heritage-kids-hoodie-9.jpeg",
+   "/products/lnxn-heritage-kids-hoodie-10.jpeg",
+   "/products/lnxn-heritage-kids-hoodie-11.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/kids/lnxn-heritage-kids-hoodie/",
+  "image_count": 12
+ },
+ {
+  "id": 10845,
+  "name": "LNXN Heritage Crew \u2013 Kid\u2019s",
+  "slug": "lnxn-heritage-crew-kids",
+  "price": 35.18,
+  "regular_price": 35.18,
+  "on_sale": false,
+  "categories": [
+   "KIDS"
+  ],
+  "images": [
+   "/products/lnxn-heritage-crew-kids-0.png",
+   "/products/lnxn-heritage-crew-kids-1.png",
+   "/products/lnxn-heritage-crew-kids-2.png",
+   "/products/lnxn-heritage-crew-kids-3.png",
+   "/products/lnxn-heritage-crew-kids-4.png",
+   "/products/lnxn-heritage-crew-kids-5.jpeg",
+   "/products/lnxn-heritage-crew-kids-6.jpeg",
+   "/products/lnxn-heritage-crew-kids-7.jpeg",
+   "/products/lnxn-heritage-crew-kids-8.jpeg",
+   "/products/lnxn-heritage-crew-kids-9.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/kids/lnxn-heritage-crew-kids/",
+  "image_count": 10
+ },
+ {
+  "id": 10790,
+  "name": "LNXN Core Crew \u2013 Kid\u2019s",
+  "slug": "lnxn-core-crew-kids",
+  "price": 35.18,
+  "regular_price": 35.18,
+  "on_sale": false,
+  "categories": [
+   "KIDS"
+  ],
+  "images": [
+   "/products/lnxn-core-crew-kids-0.png",
+   "/products/lnxn-core-crew-kids-1.png",
+   "/products/lnxn-core-crew-kids-2.png",
+   "/products/lnxn-core-crew-kids-3.png",
+   "/products/lnxn-core-crew-kids-4.png",
+   "/products/lnxn-core-crew-kids-5.png",
+   "/products/lnxn-core-crew-kids-6.png",
+   "/products/lnxn-core-crew-kids-7.jpeg",
+   "/products/lnxn-core-crew-kids-8.jpeg",
+   "/products/lnxn-core-crew-kids-9.jpeg",
+   "/products/lnxn-core-crew-kids-10.jpeg",
+   "/products/lnxn-core-crew-kids-11.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/kids/lnxn-core-crew-kids/",
+  "image_count": 12
+ },
+ {
+  "id": 10740,
+  "name": "LNXN Core Hoodie \u2013 Kid\u2019s",
+  "slug": "lnxn-core-hoodie-kids",
+  "price": 39.52,
+  "regular_price": 39.52,
+  "on_sale": false,
+  "categories": [
+   "KIDS"
+  ],
+  "images": [
+   "/products/lnxn-core-hoodie-kids-0.png",
+   "/products/lnxn-core-hoodie-kids-1.png",
+   "/products/lnxn-core-hoodie-kids-2.png",
+   "/products/lnxn-core-hoodie-kids-3.png",
+   "/products/lnxn-core-hoodie-kids-4.png",
+   "/products/lnxn-core-hoodie-kids-5.png",
+   "/products/lnxn-core-hoodie-kids-6.jpeg",
+   "/products/lnxn-core-hoodie-kids-7.png",
+   "/products/lnxn-core-hoodie-kids-8.webp",
+   "/products/lnxn-core-hoodie-kids-9.jpeg",
+   "/products/lnxn-core-hoodie-kids-10.webp",
+   "/products/lnxn-core-hoodie-kids-11.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/kids/lnxn-core-hoodie-kids/",
+  "image_count": 12
+ },
+ {
+  "id": 10648,
+  "name": "LNXN Heritage Crew \u2013 Women\u2019s",
+  "slug": "lnxn-heritage-crew",
+  "price": 38.99,
+  "regular_price": 38.99,
+  "on_sale": false,
+  "categories": [
+   "WOMEN"
+  ],
+  "images": [
+   "/products/lnxn-heritage-crew-0.png",
+   "/products/lnxn-heritage-crew-1.png",
+   "/products/lnxn-heritage-crew-2.png",
+   "/products/lnxn-heritage-crew-3.png",
+   "/products/lnxn-heritage-crew-4.png",
+   "/products/lnxn-heritage-crew-5.png",
+   "/products/lnxn-heritage-crew-6.jpeg",
+   "/products/lnxn-heritage-crew-7.png",
+   "/products/lnxn-heritage-crew-8.jpeg",
+   "/products/lnxn-heritage-crew-9.jpeg",
+   "/products/lnxn-heritage-crew-10.jpeg",
+   "/products/lnxn-heritage-crew-11.jpeg"
+  ],
+  "permalink": "https://thelnxn.com/shop-2/women/lnxn-heritage-crew/",
+  "image_count": 12
+ }
+]

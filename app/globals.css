@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #b28027;
+  --color-gold-light: #d9a94a;
+  --color-gold-dark: #7d5c1c;
+  --color-ink: #0a0a0a;
+  --color-coal: #141414;
+  --color-line: #262626;
+  --color-bone: #f4f1ea;
+  --color-smoke: #9a9a9a;
+
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+
+  --animate-marquee: marquee 30s linear infinite;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: #000;
+}
+
+/* Slim dark scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2b2b2b;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-dark);
+}
+
+/* Signature type treatments */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-gold);
+}
+
+.display {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+}
+
+.gold-rule {
+  height: 2px;
+  width: 64px;
+  background: var(--color-gold);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 1rem 2.25rem;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.btn-gold {
+  background: var(--color-gold);
+  color: #000;
+}
+.btn-gold:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  background: transparent;
+}
+.btn-outline:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold-light);
+}
+
+.btn-dark {
+  background: #000;
+  color: #fff;
+}
+.btn-dark:hover {
+  background: var(--color-gold);
+  color: #000;
+}
