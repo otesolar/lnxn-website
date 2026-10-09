@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import PhotoHero from "@/components/PhotoHero";
 import Marquee from "@/components/Marquee";
 import ProductCard from "@/components/ProductCard";
 import Reveal from "@/components/Reveal";
@@ -22,49 +23,7 @@ export default function Home() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative flex min-h-[92vh] flex-col items-center justify-center overflow-hidden px-4 text-center">
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 50% at 50% 42%, rgba(178,128,39,0.14), transparent 70%)",
-          }}
-          aria-hidden
-        />
-        <Reveal>
-          <Image
-            src="/brand/lnxn-lockup.png"
-            alt="LNXN"
-            width={520}
-            height={520}
-            priority
-            className="mx-auto h-[38vh] w-auto object-contain md:h-[46vh]"
-          />
-        </Reveal>
-        <Reveal delay={150}>
-          <p className="eyebrow mt-8">Timeless. Bold. You.</p>
-          <h1 className="display mx-auto mt-4 max-w-3xl text-4xl md:text-6xl">
-            Essentials that outlast trends
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl text-white/65">
-            Premium tees, hoodies and crews — cut clean, built to last, designed
-            for men, women and kids who dress like themselves.
-          </p>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <Link href="/shop" className="btn btn-gold">
-              Shop the Collection
-            </Link>
-            <Link href="/story" className="btn btn-outline">
-              Our Story
-            </Link>
-          </div>
-        </Reveal>
-        <div className="absolute bottom-8 flex flex-col items-center gap-2 text-white/40" aria-hidden>
-          <span className="text-[0.62rem] uppercase tracking-[0.3em]">Scroll</span>
-          <span className="block h-10 w-px bg-gradient-to-b from-gold to-transparent" />
-        </div>
-      </section>
+      <PhotoHero />
 
       <Marquee />
 
