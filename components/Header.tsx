@@ -27,7 +27,7 @@ export default function Header() {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-8">
           <Link href="/" className="flex items-center gap-2.5" aria-label="LNXN home">
             <Image
-              src="/brand/lnxn-mark-gold.png"
+              src="/brand/lnxn-mark.png"
               alt=""
               width={30}
               height={30}

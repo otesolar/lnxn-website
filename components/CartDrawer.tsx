@@ -42,7 +42,7 @@ export default function CartDrawer() {
           {items.length === 0 ? (
             <div className="flex h-full flex-col items-center justify-center text-center">
               <Image
-                src="/brand/lnxn-mark-gold.png"
+                src="/brand/lnxn-mark.png"
                 alt=""
                 width={56}
                 height={56}

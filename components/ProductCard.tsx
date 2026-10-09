@@ -37,7 +37,7 @@ export default function ProductCard({ product }: { product: Product }) {
         ) : (
           <div className="flex h-full items-center justify-center">
             <Image
-              src="/brand/lnxn-mark-gold.png"
+              src="/brand/lnxn-mark.png"
               alt="LNXN"
               width={72}
               height={72}

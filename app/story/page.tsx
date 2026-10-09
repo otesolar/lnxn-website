@@ -79,7 +79,7 @@ export default function StoryPage() {
       <section className="mx-auto max-w-5xl px-4 py-20 text-center md:px-8 md:py-28">
         <Reveal>
           <Image
-            src="/brand/lnxn-mark-gold.png"
+            src="/brand/lnxn-mark.png"
             alt=""
             width={64}
             height={64}

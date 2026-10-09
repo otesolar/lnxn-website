@@ -60,7 +60,7 @@ export default function ProductView({ product }: { product: Product }) {
               />
             ) : (
               <div className="flex h-full items-center justify-center">
-                <Image src="/brand/lnxn-mark-gold.png" alt="LNXN" width={96} height={96} className="opacity-40" />
+                <Image src="/brand/lnxn-mark.png" alt="LNXN" width={96} height={96} className="opacity-40" />
               </div>
             )}
           </div>

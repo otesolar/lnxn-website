@@ -106,7 +106,7 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-4 py-24 text-center md:px-8 md:py-32">
           <Reveal>
             <Image
-              src="/brand/lnxn-mark-gold.png"
+              src="/brand/lnxn-mark.png"
               alt=""
               width={72}
               height={72}
