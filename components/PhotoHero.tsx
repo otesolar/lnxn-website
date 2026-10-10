@@ -50,7 +50,7 @@ export default function PhotoHero() {
   const fade = Math.max(0, 1 - scrollY / 700);
 
   return (
-    <section className="relative flex min-h-[100svh] items-center overflow-hidden">
+    <section className="relative flex min-h-[100svh] items-end overflow-hidden">
       {/* Background photograph */}
       <div
         className="absolute inset-0"
@@ -64,7 +64,7 @@ export default function PhotoHero() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover object-[30%_50%] md:object-center"
           />
         </div>
       </div>
@@ -74,17 +74,21 @@ export default function PhotoHero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(100deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 34%, rgba(0,0,0,0.12) 62%, rgba(0,0,0,0.05) 100%)",
+            "linear-gradient(100deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.36) 30%, rgba(0,0,0,0.10) 55%, rgba(0,0,0,0) 80%)",
         }}
         aria-hidden
       />
       <div
-        className="absolute inset-0 md:hidden"
-        style={{ background: "rgba(0,0,0,0.35)" }}
+        className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/55 to-transparent"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent"
+        className="absolute inset-0 md:hidden"
+        style={{ background: "rgba(0,0,0,0.30)" }}
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-ink via-ink/40 to-transparent"
         aria-hidden
       />
 
@@ -100,7 +104,7 @@ export default function PhotoHero() {
 
       {/* Copy */}
       <div
-        className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10"
+        className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 md:px-10 md:pb-10"
         style={{ transform: `translateY(${contentShift}px)`, opacity: fade }}
       >
         <div className="max-w-2xl">
@@ -108,7 +112,7 @@ export default function PhotoHero() {
             <p className="eyebrow">Limitless Next Generation</p>
           </Rise>
           <Rise mounted={mounted} delay={550}>
-            <h1 className="display mt-5 text-[clamp(2.6rem,11vw,6rem)] leading-[0.95]">
+            <h1 className="display mt-4 text-[clamp(2.6rem,11vw,6rem)] leading-[0.95]">
               Limitless
               <br />
               Next
@@ -116,14 +120,14 @@ export default function PhotoHero() {
               Generation<span className="text-gold">.</span>
             </h1>
           </Rise>
-          <Rise mounted={mounted} delay={750}>
-            <p className="mt-6 max-w-md leading-relaxed text-white/70">
+          <Rise mounted={mounted} delay={750} className="hidden md:block">
+            <p className="mt-5 max-w-md leading-relaxed text-white/70">
               Not everyone is built for what comes next. LNXN is clothing for
               those who are.
             </p>
           </Rise>
           <Rise mounted={mounted} delay={950}>
-            <div className="mt-9 flex flex-wrap gap-4">
+            <div className="mt-7 flex flex-wrap gap-4">
               <Link href="/shop?audience=Men" className="btn btn-gold">
                 Shop Men
               </Link>
