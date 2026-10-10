@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import SocialLinks from "./SocialLinks";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -33,6 +34,7 @@ export default function Footer() {
               Premium essentials designed to outlast trends — tees, hoodies and
               crews for men, women and kids.
             </p>
+            <SocialLinks className="mt-6" />
           </div>
 
           <div>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "@/lib/cart";
+import SocialLinks from "./SocialLinks";
 
 const NAV = [
   { label: "Shop All", href: "/shop" },
@@ -91,6 +92,7 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
+            <SocialLinks className="mt-4 pb-2" />
           </nav>
         )}
       </header>
