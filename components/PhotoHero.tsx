@@ -4,8 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-function Rise({
-  mounted,
+// Point this at "/brand/hero.mp4" once a hero video is provided.
+// Until then the hero uses the campaign photograph.
+const HERO_VIDEO_SRC: string | null = null;
+
+function Rise({  mounted,
   delay,
   children,
   className = "",
@@ -30,10 +33,14 @@ function Rise({
 export default function PhotoHero() {
   const [mounted, setMounted] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const raf = useRef(0);
 
   useEffect(() => {
     setMounted(true);
+    setReducedMotion(
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
     const onScroll = () => {
       cancelAnimationFrame(raf.current);
       raf.current = requestAnimationFrame(() => setScrollY(window.scrollY));
@@ -51,22 +58,35 @@ export default function PhotoHero() {
 
   return (
     <section className="relative flex min-h-[100svh] items-end overflow-hidden">
-      {/* Background photograph */}
+      {/* Background: video when available, photograph otherwise */}
       <div
         className="absolute inset-0"
         style={{ transform: `translateY(${bgShift}px) scale(1.06)` }}
         aria-hidden
       >
-        <div style={{ animation: "slow-zoom 30s ease-in-out infinite alternate" }} className="h-full w-full">
-          <Image
-            src="/brand/hero-bg.jpg"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[30%_50%] md:object-center"
+        {HERO_VIDEO_SRC && !reducedMotion ? (
+          <video
+            className="h-full w-full object-cover object-[30%_50%] md:object-center"
+            src={HERO_VIDEO_SRC}
+            poster="/brand/hero-bg.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
           />
-        </div>
+        ) : (
+          <div style={{ animation: "slow-zoom 30s ease-in-out infinite alternate" }} className="h-full w-full">
+            <Image
+              src="/brand/hero-bg.jpg"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-[30%_50%] md:object-center"
+            />
+          </div>
+        )}
       </div>
 
       {/* Legibility gradients */}
