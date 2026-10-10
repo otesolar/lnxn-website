@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-// Point this at "/brand/hero.mp4" once a hero video is provided.
-// Until then the hero uses the campaign photograph.
-const HERO_VIDEO_SRC: string | null = null;
+// Hero background video. Falls back to the campaign photograph when null
+// (or when the visitor prefers reduced motion).
+const HERO_VIDEO_SRC: string | null = "/brand/hero.mp4";
 
 function Rise({  mounted,
   delay,
