@@ -225,12 +225,6 @@ export default function ProductView({ product }: { product: Product }) {
                 </div>
                 <div className="flex gap-3">
                   <dt className="w-20 shrink-0 text-xs font-bold uppercase tracking-[0.14em] text-gold-light">
-                    Blank
-                  </dt>
-                  <dd>{spec.blank}</dd>
-                </div>
-                <div className="flex gap-3">
-                  <dt className="w-20 shrink-0 text-xs font-bold uppercase tracking-[0.14em] text-gold-light">
                     Fit
                   </dt>
                   <dd>{spec.fit}</dd>

@@ -1,6 +1,7 @@
 import type { Audience, Garment } from "./catalog";
 
 export interface ProductSpec {
+  /** Internal reference only — never displayed (premium branding). */
   blank: string;
   fabric: string;
   composition: string;
