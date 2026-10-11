@@ -11,6 +11,7 @@ import {
   type Product,
 } from "@/lib/catalog";
 import { getSizeChart, getSizes } from "@/lib/size-charts";
+import { getColorways, defaultColorway } from "@/lib/product-colors";
 import SizeGuide from "@/components/SizeGuide";
 import ProductCard from "@/components/ProductCard";
 
@@ -45,6 +46,15 @@ export default function ProductView({ product }: { product: Product }) {
   const related = relatedProducts(product);
   const chart = getSizeChart(product.garment, product.audience);
   const sizes = getSizes(product.garment, product.audience);
+  const colorways = getColorways(product.slug);
+  const [colorName, setColorName] = useState<string>(
+    () => defaultColorway(product.slug, imgs[0] ?? "")?.name ?? "",
+  );
+  const activeColorway = colorways.find((c) => c.name === colorName);
+  const gallery =
+    activeColorway && activeColorway.images.length > 0
+      ? activeColorway.images
+      : imgs;
 
   return (
     <>
@@ -52,9 +62,9 @@ export default function ProductView({ product }: { product: Product }) {
         {/* Gallery */}
         <div>
           <div className="relative aspect-square overflow-hidden bg-coal">
-            {imgs[active] ? (
+            {gallery[active] ? (
               <Image
-                src={imgs[active]}
+                src={gallery[active]}
                 alt={product.name}
                 fill
                 priority
@@ -67,9 +77,9 @@ export default function ProductView({ product }: { product: Product }) {
               </div>
             )}
           </div>
-          {imgs.length > 1 && (
+          {gallery.length > 1 && (
             <div className="mt-4 grid grid-cols-5 gap-3">
-              {imgs.slice(0, 10).map((src, i) => (
+              {gallery.slice(0, 10).map((src, i) => (
                 <button
                   key={src + i}
                   onClick={() => setActive(i)}
@@ -104,6 +114,37 @@ export default function ProductView({ product }: { product: Product }) {
           <p className="mt-5 leading-relaxed text-white/65">
             {LINE_COPY[product.line]}
           </p>
+
+          {colorways.length > 0 && (
+            <div className="mt-8">
+              <div className="mb-3 flex items-center justify-between">
+                <p className="text-xs font-bold uppercase tracking-[0.22em]">
+                  Color
+                </p>
+                <span className="text-xs text-smoke">{activeColorway?.name}</span>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {colorways.map((c) => (
+                  <button
+                    key={c.name}
+                    onClick={() => {
+                      setColorName(c.name);
+                      setActive(0);
+                    }}
+                    title={c.name}
+                    aria-label={`Select color ${c.name}`}
+                    aria-pressed={colorName === c.name}
+                    style={{ backgroundColor: c.hex }}
+                    className={`h-10 w-10 rounded-full border transition-all ${
+                      colorName === c.name
+                        ? "scale-110 border-gold ring-2 ring-gold ring-offset-2 ring-offset-ink"
+                        : "border-line hover:scale-105 hover:border-gold"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="mt-8">
             <div className="mb-3 flex items-center justify-between">
@@ -153,8 +194,9 @@ export default function ProductView({ product }: { product: Product }) {
                     name: product.name,
                     slug: product.slug,
                     price: product.price,
-                    image: imgs[0] ?? "",
+                    image: gallery[0] ?? imgs[0] ?? "",
                     size,
+                    color: colorName,
                   },
                   qty,
                 )

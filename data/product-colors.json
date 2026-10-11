@@ -1,0 +1,1022 @@
+{
+ "lnxn-core-identity-hoodie-mens": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/lnxn-core-identity-hoodie-mens-2.png",
+    "/products/lnxn-core-identity-hoodie-mens-10.png"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-core-identity-hoodie-mens-4.png",
+    "/products/lnxn-core-identity-hoodie-mens-9.png"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-core-identity-hoodie-mens-5.png",
+    "/products/lnxn-core-identity-hoodie-mens-7.png"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-core-identity-hoodie-mens-0.png",
+    "/products/lnxn-core-identity-hoodie-mens-6.png",
+    "/products/lnxn-core-identity-hoodie-mens-12.png"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-core-identity-hoodie-mens-1.png",
+    "/products/lnxn-core-identity-hoodie-mens-11.png"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-core-identity-hoodie-mens-3.png",
+    "/products/lnxn-core-identity-hoodie-mens-8.png"
+   ]
+  }
+ ],
+ "lnxn-core-identity-hoodie-womens-edition": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/lnxn-core-identity-hoodie-womens-edition-0.png",
+    "/products/lnxn-core-identity-hoodie-womens-edition-5.png",
+    "/products/lnxn-core-identity-hoodie-womens-edition-8.jpg"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-core-identity-hoodie-womens-edition-6.png",
+    "/products/lnxn-core-identity-hoodie-womens-edition-10.jpg"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-core-identity-hoodie-womens-edition-2.png",
+    "/products/lnxn-core-identity-hoodie-womens-edition-11.jpg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-core-identity-hoodie-womens-edition-3.png",
+    "/products/lnxn-core-identity-hoodie-womens-edition-12.jpg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-core-identity-hoodie-womens-edition-1.png",
+    "/products/lnxn-core-identity-hoodie-womens-edition-7.jpg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-core-identity-hoodie-womens-edition-4.png",
+    "/products/lnxn-core-identity-hoodie-womens-edition-9.jpg"
+   ]
+  }
+ ],
+ "lnxn-heritage-crew-mens": [
+  {
+   "name": "White",
+   "hex": "#F4F4F4",
+   "images": [
+    "/products/lnxn-heritage-crew-mens-5.png"
+   ]
+  },
+  {
+   "name": "Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-heritage-crew-mens-4.png"
+   ]
+  },
+  {
+   "name": "Sport Grey",
+   "hex": "#B5B5B8",
+   "images": [
+    "/products/lnxn-heritage-crew-mens-0.png",
+    "/products/lnxn-heritage-crew-mens-2.png"
+   ]
+  },
+  {
+   "name": "Maroon",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-heritage-crew-mens-1.png"
+   ]
+  },
+  {
+   "name": "Dark Heather",
+   "hex": "#454548",
+   "images": [
+    "/products/lnxn-heritage-crew-mens-6.png"
+   ]
+  },
+  {
+   "name": "Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-heritage-crew-mens-3.png"
+   ]
+  }
+ ],
+ "lnxn-core-tee-mens": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/lnxn-core-tee-mens-5.png",
+    "/products/lnxn-core-tee-mens-7.jpeg"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-core-tee-mens-2.png",
+    "/products/lnxn-core-tee-mens-8.jpeg"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-core-tee-mens-1.png",
+    "/products/lnxn-core-tee-mens-9.jpeg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-core-tee-mens-3.png",
+    "/products/lnxn-core-tee-mens-12.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-core-tee-mens-0.png",
+    "/products/lnxn-core-tee-mens-6.png",
+    "/products/lnxn-core-tee-mens-10.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-core-tee-mens-4.png",
+    "/products/lnxn-core-tee-mens-11.jpeg"
+   ]
+  }
+ ],
+ "men-lnxn-heritage-tee": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/men-lnxn-heritage-tee-0.png",
+    "/products/men-lnxn-heritage-tee-4.png",
+    "/products/men-lnxn-heritage-tee-7.jpeg"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/men-lnxn-heritage-tee-6.png",
+    "/products/men-lnxn-heritage-tee-8.jpeg"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/men-lnxn-heritage-tee-2.png",
+    "/products/men-lnxn-heritage-tee-9.jpeg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/men-lnxn-heritage-tee-3.png",
+    "/products/men-lnxn-heritage-tee-12.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/men-lnxn-heritage-tee-1.png",
+    "/products/men-lnxn-heritage-tee-10.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/men-lnxn-heritage-tee-5.png",
+    "/products/men-lnxn-heritage-tee-11.jpeg"
+   ]
+  }
+ ],
+ "men-lnxn-core-hoodie": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/men-lnxn-core-hoodie-0.png",
+    "/products/men-lnxn-core-hoodie-1.png"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/men-lnxn-core-hoodie-4.png",
+    "/products/men-lnxn-core-hoodie-7.jpeg"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/men-lnxn-core-hoodie-5.png",
+    "/products/men-lnxn-core-hoodie-8.jpeg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/men-lnxn-core-hoodie-3.png",
+    "/products/men-lnxn-core-hoodie-9.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/men-lnxn-core-hoodie-6.png",
+    "/products/men-lnxn-core-hoodie-10.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/men-lnxn-core-hoodie-2.png",
+    "/products/men-lnxn-core-hoodie-11.jpeg"
+   ]
+  }
+ ],
+ "men-lnxn-heritage-hoodie": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/men-lnxn-heritage-hoodie-2.png"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/men-lnxn-heritage-hoodie-0.png",
+    "/products/men-lnxn-heritage-hoodie-4.png"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/men-lnxn-heritage-hoodie-5.png"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/men-lnxn-heritage-hoodie-6.png"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/men-lnxn-heritage-hoodie-1.png"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/men-lnxn-heritage-hoodie-3.png"
+   ]
+  }
+ ],
+ "men-lnxn-core-crew": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/men-lnxn-core-crew-0.png",
+    "/products/men-lnxn-core-crew-4.png"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/men-lnxn-core-crew-2.png",
+    "/products/men-lnxn-core-crew-7.jpeg"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/men-lnxn-core-crew-3.png",
+    "/products/men-lnxn-core-crew-8.jpeg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/men-lnxn-core-crew-5.png",
+    "/products/men-lnxn-core-crew-9.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/men-lnxn-core-crew-6.png",
+    "/products/men-lnxn-core-crew-10.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/men-lnxn-core-crew-1.png",
+    "/products/men-lnxn-core-crew-11.jpeg"
+   ]
+  }
+ ],
+ "lnxn-core-crew": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/lnxn-core-crew-0.png",
+    "/products/lnxn-core-crew-2.png"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-core-crew-4.png",
+    "/products/lnxn-core-crew-7.jpeg"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-core-crew-5.png",
+    "/products/lnxn-core-crew-8.jpeg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-core-crew-6.png",
+    "/products/lnxn-core-crew-9.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-core-crew-1.png",
+    "/products/lnxn-core-crew-10.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-core-crew-3.png",
+    "/products/lnxn-core-crew-11.jpeg"
+   ]
+  }
+ ],
+ "lnxn-heritage-hoodie": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/lnxn-heritage-hoodie-6.png",
+    "/products/lnxn-heritage-hoodie-11.jpg"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-heritage-hoodie-2.png"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-heritage-hoodie-0.png",
+    "/products/lnxn-heritage-hoodie-4.png",
+    "/products/lnxn-heritage-hoodie-9.png"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-heritage-hoodie-5.png",
+    "/products/lnxn-heritage-hoodie-8.png"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-heritage-hoodie-1.png",
+    "/products/lnxn-heritage-hoodie-7.jpg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-heritage-hoodie-3.png",
+    "/products/lnxn-heritage-hoodie-10.png"
+   ]
+  }
+ ],
+ "lnxn-core-hoodie": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/lnxn-core-hoodie-6.png"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-core-hoodie-1.png",
+    "/products/lnxn-core-hoodie-7.jpeg"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-core-hoodie-2.png",
+    "/products/lnxn-core-hoodie-8.jpeg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-core-hoodie-3.png",
+    "/products/lnxn-core-hoodie-9.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-core-hoodie-0.png",
+    "/products/lnxn-core-hoodie-5.png",
+    "/products/lnxn-core-hoodie-10.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-core-hoodie-4.png",
+    "/products/lnxn-core-hoodie-11.jpeg"
+   ]
+  }
+ ],
+ "lnxn-heritage-tee": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/lnxn-heritage-tee-2.png",
+    "/products/lnxn-heritage-tee-7.jpeg"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-heritage-tee-6.png",
+    "/products/lnxn-heritage-tee-8.jpeg"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-heritage-tee-0.png",
+    "/products/lnxn-heritage-tee-3.png",
+    "/products/lnxn-heritage-tee-9.jpeg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-heritage-tee-4.png",
+    "/products/lnxn-heritage-tee-12.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-heritage-tee-1.png",
+    "/products/lnxn-heritage-tee-10.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-heritage-tee-5.png",
+    "/products/lnxn-heritage-tee-11.jpeg"
+   ]
+  }
+ ],
+ "lnxn-core-tee": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/lnxn-core-tee-4.png",
+    "/products/lnxn-core-tee-7.jpeg",
+    "/products/lnxn-core-tee-15.png"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-core-tee-6.png",
+    "/products/lnxn-core-tee-8.jpeg"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-core-tee-0.png",
+    "/products/lnxn-core-tee-2.png",
+    "/products/lnxn-core-tee-9.jpeg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-core-tee-3.png",
+    "/products/lnxn-core-tee-13.jpeg",
+    "/products/lnxn-core-tee-14.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-core-tee-1.png",
+    "/products/lnxn-core-tee-10.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-core-tee-5.png",
+    "/products/lnxn-core-tee-11.jpeg",
+    "/products/lnxn-core-tee-12.jpeg"
+   ]
+  }
+ ],
+ "lnxn-heritage-cropped-hoodie": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/lnxn-heritage-cropped-hoodie-3.png"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-heritage-cropped-hoodie-1.png",
+    "/products/lnxn-heritage-cropped-hoodie-4.jpeg"
+   ]
+  },
+  {
+   "name": "Tempest Grey",
+   "hex": "#8C9698",
+   "images": [
+    "/products/lnxn-heritage-cropped-hoodie-0.png",
+    "/products/lnxn-heritage-cropped-hoodie-2.png",
+    "/products/lnxn-heritage-cropped-hoodie-5.jpeg"
+   ]
+  }
+ ],
+ "lnxn-core-tee-kids": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/lnxn-core-tee-kids-6.jpeg"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-core-tee-kids-0.png",
+    "/products/lnxn-core-tee-kids-4.png",
+    "/products/lnxn-core-tee-kids-7.jpeg"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-core-tee-kids-2.png",
+    "/products/lnxn-core-tee-kids-8.jpeg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-core-tee-kids-5.png",
+    "/products/lnxn-core-tee-kids-9.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-core-tee-kids-10.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-core-tee-kids-1.png",
+    "/products/lnxn-core-tee-kids-3.png",
+    "/products/lnxn-core-tee-kids-11.jpeg"
+   ]
+  }
+ ],
+ "lnxn-heritage-tee-kids": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/lnxn-heritage-tee-kids-0.png",
+    "/products/lnxn-heritage-tee-kids-2.png",
+    "/products/lnxn-heritage-tee-kids-5.jpeg"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-heritage-tee-kids-6.jpeg"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-heritage-tee-kids-7.jpeg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-heritage-tee-kids-4.png",
+    "/products/lnxn-heritage-tee-kids-8.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-heritage-tee-kids-1.png",
+    "/products/lnxn-heritage-tee-kids-9.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-heritage-tee-kids-3.png",
+    "/products/lnxn-heritage-tee-kids-10.jpeg"
+   ]
+  }
+ ],
+ "lnxn-heritage-kids-hoodie": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/lnxn-heritage-kids-hoodie-4.png",
+    "/products/lnxn-heritage-kids-hoodie-11.jpeg"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-heritage-kids-hoodie-3.png",
+    "/products/lnxn-heritage-kids-hoodie-6.jpeg"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-heritage-kids-hoodie-1.png",
+    "/products/lnxn-heritage-kids-hoodie-7.jpeg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-heritage-kids-hoodie-2.png",
+    "/products/lnxn-heritage-kids-hoodie-8.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-heritage-kids-hoodie-9.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-heritage-kids-hoodie-0.png",
+    "/products/lnxn-heritage-kids-hoodie-5.png",
+    "/products/lnxn-heritage-kids-hoodie-10.jpeg"
+   ]
+  }
+ ],
+ "lnxn-heritage-crew-kids": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": []
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-heritage-crew-kids-1.png",
+    "/products/lnxn-heritage-crew-kids-5.jpeg"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-heritage-crew-kids-2.png",
+    "/products/lnxn-heritage-crew-kids-6.jpeg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-heritage-crew-kids-0.png",
+    "/products/lnxn-heritage-crew-kids-3.png",
+    "/products/lnxn-heritage-crew-kids-7.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-heritage-crew-kids-4.png",
+    "/products/lnxn-heritage-crew-kids-8.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-heritage-crew-kids-9.jpeg"
+   ]
+  }
+ ],
+ "lnxn-core-crew-kids": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": []
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-core-crew-kids-1.png",
+    "/products/lnxn-core-crew-kids-4.png",
+    "/products/lnxn-core-crew-kids-7.jpeg"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-core-crew-kids-0.png",
+    "/products/lnxn-core-crew-kids-6.png",
+    "/products/lnxn-core-crew-kids-8.jpeg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-core-crew-kids-5.png",
+    "/products/lnxn-core-crew-kids-9.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-core-crew-kids-2.png",
+    "/products/lnxn-core-crew-kids-10.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-core-crew-kids-3.png",
+    "/products/lnxn-core-crew-kids-11.jpeg"
+   ]
+  }
+ ],
+ "lnxn-core-hoodie-kids": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/lnxn-core-hoodie-kids-1.png"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-core-hoodie-kids-3.png",
+    "/products/lnxn-core-hoodie-kids-10.webp"
+   ]
+  },
+  {
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-core-hoodie-kids-7.png",
+    "/products/lnxn-core-hoodie-kids-8.webp"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-core-hoodie-kids-5.png",
+    "/products/lnxn-core-hoodie-kids-9.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-core-hoodie-kids-4.png",
+    "/products/lnxn-core-hoodie-kids-11.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-core-hoodie-kids-0.png",
+    "/products/lnxn-core-hoodie-kids-2.png",
+    "/products/lnxn-core-hoodie-kids-6.jpeg"
+   ]
+  }
+ ],
+ "lnxn-heritage-crew": [
+  {
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
+   "images": [
+    "/products/lnxn-heritage-crew-2.png",
+    "/products/lnxn-heritage-crew-10.jpeg"
+   ]
+  },
+  {
+   "name": "Onyx Black",
+   "hex": "#1C1C1E",
+   "images": [
+    "/products/lnxn-heritage-crew-4.png",
+    "/products/lnxn-heritage-crew-6.jpeg"
+   ]
+  },
+  {
+   "name": "Stone Gray",
+   "hex": "#B9B9B9",
+   "images": [
+    "/products/lnxn-heritage-crew-5.png",
+    "/products/lnxn-heritage-crew-8.jpeg"
+   ]
+  },
+  {
+   "name": "Wine Red",
+   "hex": "#6E2434",
+   "images": [
+    "/products/lnxn-heritage-crew-7.png",
+    "/products/lnxn-heritage-crew-9.jpeg"
+   ]
+  },
+  {
+   "name": "Carbon Gray",
+   "hex": "#4A4A4D",
+   "images": [
+    "/products/lnxn-heritage-crew-0.png",
+    "/products/lnxn-heritage-crew-1.png",
+    "/products/lnxn-heritage-crew-11.jpeg"
+   ]
+  },
+  {
+   "name": "Midnight Navy",
+   "hex": "#232E4A",
+   "images": [
+    "/products/lnxn-heritage-crew-3.png"
+   ]
+  }
+ ]
+}

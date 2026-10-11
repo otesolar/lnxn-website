@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "@/lib/cart";
+import SearchBar from "./SearchBar";
 import SocialLinks from "./SocialLinks";
 
 const NAV = [
@@ -13,6 +14,7 @@ const NAV = [
   { label: "Kids", href: "/shop?audience=Kids" },
   { label: "Our Story", href: "/story" },
   { label: "Lookbook", href: "/lookbook" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
@@ -50,6 +52,7 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <SearchBar />
             <button
               onClick={openCart}
               className="relative flex items-center gap-2 px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-white/80 transition-colors hover:text-gold-light"

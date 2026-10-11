@@ -76,7 +76,7 @@ export default function CartDrawer() {
                       </button>
                     </div>
                     <p className="mt-1 text-xs uppercase tracking-[0.2em] text-smoke">
-                      Size {item.size}
+                      {item.color ? `${item.color} · ` : ""}Size {item.size}
                     </p>
                     <div className="mt-auto flex items-center justify-between pt-2">
                       <div className="flex items-center border border-line">
