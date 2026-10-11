@@ -12,6 +12,7 @@ import {
 } from "@/lib/catalog";
 import { getSizeChart, getSizes } from "@/lib/size-charts";
 import { getColorways, defaultColorway } from "@/lib/product-colors";
+import { getProductSpec } from "@/lib/product-specs";
 import SizeGuide from "@/components/SizeGuide";
 import ProductCard from "@/components/ProductCard";
 
@@ -44,6 +45,7 @@ export default function ProductView({ product }: { product: Product }) {
   const [size, setSize] = useState<string>("M");
   const [qty, setQty] = useState(1);
   const related = relatedProducts(product);
+  const spec = getProductSpec(product.garment, product.audience);
   const chart = getSizeChart(product.garment, product.audience);
   const sizes = getSizes(product.garment, product.audience);
   const colorways = getColorways(product.slug);
@@ -206,12 +208,46 @@ export default function ProductView({ product }: { product: Product }) {
               Add to Cart — {formatPrice(product.price * qty)}
             </button>
           </div>
+          <p className="mt-3 text-xs text-smoke">
+            Made to order · ~2–3 days production + ~3 days shipping
+          </p>
 
           <div className="mt-8 border-t border-line">
             <Accordion title="Details">
-              Premium midweight fabric with a clean, structured drape. Signature
-              LNXN chest mark. Reinforced stitching at stress points. Machine
-              washable — designed to look better with wear.
+              <dl className="space-y-2.5">
+                <div className="flex gap-3">
+                  <dt className="w-20 shrink-0 text-xs font-bold uppercase tracking-[0.14em] text-gold-light">
+                    Fabric
+                  </dt>
+                  <dd>
+                    {spec.fabric} — {spec.composition}
+                  </dd>
+                </div>
+                <div className="flex gap-3">
+                  <dt className="w-20 shrink-0 text-xs font-bold uppercase tracking-[0.14em] text-gold-light">
+                    Blank
+                  </dt>
+                  <dd>{spec.blank}</dd>
+                </div>
+                <div className="flex gap-3">
+                  <dt className="w-20 shrink-0 text-xs font-bold uppercase tracking-[0.14em] text-gold-light">
+                    Fit
+                  </dt>
+                  <dd>{spec.fit}</dd>
+                </div>
+                <div className="flex gap-3">
+                  <dt className="w-20 shrink-0 text-xs font-bold uppercase tracking-[0.14em] text-gold-light">
+                    Print
+                  </dt>
+                  <dd>{spec.print}</dd>
+                </div>
+                <div className="flex gap-3">
+                  <dt className="w-20 shrink-0 text-xs font-bold uppercase tracking-[0.14em] text-gold-light">
+                    Care
+                  </dt>
+                  <dd>{spec.care.join(" · ")}</dd>
+                </div>
+              </dl>
             </Accordion>
             <Accordion title="Fit">
               Cut true to size with a modern, slightly relaxed fit. Model sizing
@@ -219,9 +255,11 @@ export default function ProductView({ product }: { product: Product }) {
               classic fit, up for an oversized look.
             </Accordion>
             <Accordion title="Shipping & Returns">
-              Orders are processed quickly and shipped with tracking. If
-              something isn&apos;t right, easy returns are available — full
-              details at checkout.
+              Made to order — each piece is printed after you check out.
+              Production takes about 2–3 business days, then about 3 business
+              days in transit. Shipping costs are calculated at checkout and
+              every order ships with tracking. If something isn&apos;t right,
+              easy returns are available — full details at checkout.
             </Accordion>
           </div>
         </div>

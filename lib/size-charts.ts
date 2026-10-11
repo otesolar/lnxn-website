@@ -88,12 +88,23 @@ const kidsTee: SizeChart = {
   ],
 };
 
+const croppedHoodieChart: SizeChart = {
+  title: "Cropped Hoodie",
+  sizes: ["XS", "S", "M", "L"],
+  rows: [
+    { size: "XS", width: 20.0, length: 17.5, sleeve: 20.5 },
+    { size: "S", width: 22.0, length: 18.5, sleeve: 21.0 },
+    { size: "M", width: 24.0, length: 19.25, sleeve: 21.5 },
+    { size: "L", width: 26.0, length: 20.25, sleeve: 22.0 },
+  ],
+};
+
 /** Returns the measurement chart for a product, or null when none is published. */
 export function getSizeChart(
   garment: Garment,
   audience: Audience,
 ): SizeChart | null {
-  if (garment === "Cropped Hoodie") return null;
+  if (garment === "Cropped Hoodie") return croppedHoodieChart;
   if (audience === "Kids") {
     if (garment === "Hoodie") return kidsHoodie;
     if (garment === "Crew") return kidsCrew;
