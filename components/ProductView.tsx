@@ -8,9 +8,10 @@ import {
   formatPrice,
   productImages,
   relatedProducts,
-  SIZES,
   type Product,
 } from "@/lib/catalog";
+import { getSizeChart, getSizes } from "@/lib/size-charts";
+import SizeGuide from "@/components/SizeGuide";
 import ProductCard from "@/components/ProductCard";
 
 const LINE_COPY: Record<string, string> = {
@@ -42,6 +43,8 @@ export default function ProductView({ product }: { product: Product }) {
   const [size, setSize] = useState<string>("M");
   const [qty, setQty] = useState(1);
   const related = relatedProducts(product);
+  const chart = getSizeChart(product.garment, product.audience);
+  const sizes = getSizes(product.garment, product.audience);
 
   return (
     <>
@@ -105,10 +108,10 @@ export default function ProductView({ product }: { product: Product }) {
           <div className="mt-8">
             <div className="mb-3 flex items-center justify-between">
               <p className="text-xs font-bold uppercase tracking-[0.22em]">Size</p>
-              <span className="text-xs text-smoke">True to size</span>
+              <SizeGuide chart={chart} garmentLabel={product.garment} />
             </div>
             <div className="flex flex-wrap gap-2">
-              {SIZES.map((s) => (
+              {sizes.map((s) => (
                 <button
                   key={s}
                   onClick={() => setSize(s)}
