@@ -209,7 +209,7 @@ export default function ProductView({ product }: { product: Product }) {
             </button>
           </div>
           <p className="mt-3 text-xs text-smoke">
-            Made to order · ~2–3 days production + ~3 days shipping
+            Dispatched in 2–3 business days · Tracked shipping
           </p>
 
           <div className="mt-8 border-t border-line">
@@ -249,11 +249,14 @@ export default function ProductView({ product }: { product: Product }) {
               classic fit, up for an oversized look.
             </Accordion>
             <Accordion title="Shipping & Returns">
-              Made to order — each piece is printed after you check out.
-              Production takes about 2–3 business days, then about 3 business
-              days in transit. Shipping costs are calculated at checkout and
-              every order ships with tracking. If something isn&apos;t right,
-              easy returns are available — full details at checkout.
+              Standard processing time is 2–3 business days. Orders ship in
+              approximately 3 business days with tracking. Shipping costs are
+              calculated at checkout.{" "}
+              <Link href="/shipping" className="text-gold-light underline underline-offset-4 hover:text-gold">
+                Read our full shipping policy
+              </Link>
+              . If something isn&apos;t right, easy returns are available —
+              full details at checkout.
             </Accordion>
           </div>
         </div>
