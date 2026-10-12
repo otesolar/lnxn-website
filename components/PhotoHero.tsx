@@ -7,6 +7,11 @@ import { useEffect, useRef, useState } from "react";
 // Hero background video. Falls back to the campaign photograph when null
 // (or when the visitor prefers reduced motion).
 const HERO_VIDEO_SRC: string | null = "/brand/hero.mp4";
+// Vertical cut of the hero for phones — the wide cinematic frame only shows
+// a sliver on portrait screens, so mobile gets its own 9:16 edit.
+const HERO_VIDEO_SRC_MOBILE: string | null = "/brand/hero-mobile.mp4";
+const HERO_POSTER = "/brand/hero-bg.jpg";
+const HERO_POSTER_MOBILE = "/brand/hero-mobile-poster.jpg";
 
 function Rise({  mounted,
   delay,
@@ -34,6 +39,7 @@ export default function PhotoHero() {
   const [mounted, setMounted] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const raf = useRef(0);
 
   useEffect(() => {
@@ -41,6 +47,10 @@ export default function PhotoHero() {
     setReducedMotion(
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     );
+    const mq = window.matchMedia("(max-width: 767px)");
+    const pick = () => setIsMobile(mq.matches);
+    pick();
+    mq.addEventListener("change", pick);
     const onScroll = () => {
       cancelAnimationFrame(raf.current);
       raf.current = requestAnimationFrame(() => setScrollY(window.scrollY));
@@ -48,6 +58,7 @@ export default function PhotoHero() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", onScroll);
+      mq.removeEventListener("change", pick);
       cancelAnimationFrame(raf.current);
     };
   }, []);
@@ -55,6 +66,11 @@ export default function PhotoHero() {
   const bgShift = Math.min(scrollY * 0.22, 260);
   const contentShift = Math.min(scrollY * 0.1, 140);
   const fade = Math.max(0, 1 - scrollY / 700);
+
+  // Phones get the vertical cut; the wide video only shows a sliver on
+  // portrait screens. Picked after mount so only the right file downloads.
+  const videoSrc = isMobile ? HERO_VIDEO_SRC_MOBILE : HERO_VIDEO_SRC;
+  const posterSrc = isMobile ? HERO_POSTER_MOBILE : HERO_POSTER;
 
   return (
     <section className="relative flex min-h-[calc(100svh-4rem)] items-end overflow-hidden">
@@ -64,29 +80,30 @@ export default function PhotoHero() {
         style={{ transform: `translateY(${bgShift}px) scale(1.06)` }}
         aria-hidden
       >
-        {HERO_VIDEO_SRC && !reducedMotion ? (
+        {mounted && videoSrc && !reducedMotion ? (
           <video
-            className="h-full w-full object-cover object-[30%_50%] md:object-center"
-            src={HERO_VIDEO_SRC}
-            poster="/brand/hero-bg.jpg"
+            key={videoSrc}
+            className="h-full w-full object-cover object-center"
+            src={videoSrc}
+            poster={posterSrc}
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
           />
-        ) : (
+        ) : mounted ? (
           <div style={{ animation: "slow-zoom 30s ease-in-out infinite alternate" }} className="h-full w-full">
             <Image
-              src="/brand/hero-bg.jpg"
+              src={posterSrc}
               alt=""
               fill
               priority
               sizes="100vw"
-              className="object-cover object-[30%_50%] md:object-center"
+              className="object-cover object-center"
             />
           </div>
-        )}
+        ) : null}
       </div>
 
       {/* Legibility gradients */}
