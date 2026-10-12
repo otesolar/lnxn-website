@@ -147,33 +147,69 @@ export async function getWooProduct(
 }
 
 /**
- * For variable products, find the variation id whose Size attribute matches
- * `size` (case-insensitive). Returns null for simple products or no match.
+ * For variable products, find the variation id matching Size and (when given)
+ * Color, case-insensitive. Tries an exact color match first, then a
+ * Gray/Grey-normalized match (the catalog uses both spellings). Falls back to
+ * a size-only match with a warning if the color matches nothing, so checkout
+ * never breaks on a color-name mismatch. Returns null for simple products or
+ * when no size matches.
  */
 export async function findVariationForSize(
   productId: number,
   size: string,
+  color?: string,
 ): Promise<number | null> {
   const product = await getWooProduct(productId);
   if (product.type !== "variable") return null;
   const variations = (await wooFetch(
     `/products/${productId}/variations?per_page=100`,
   )) as WooVariation[];
-  const want = size.trim().toLowerCase();
-  const match = variations.find((v) =>
+  const wantSize = size.trim().toLowerCase();
+  const sizeMatches = variations.filter((v) =>
     (v.attributes ?? []).some(
       (a) =>
         /size/i.test(a.name ?? "") &&
-        (a.option ?? "").trim().toLowerCase() === want,
+        (a.option ?? "").trim().toLowerCase() === wantSize,
     ),
   );
-  return match ? match.id : null;
+  if (sizeMatches.length === 0) return null;
+
+  const wantColor = color?.trim().toLowerCase();
+  if (!wantColor) return sizeMatches[0].id;
+
+  const isColorAttr = (a: { name?: string }) =>
+    /colou?r/i.test(a.name ?? "");
+  const normGray = (s: string) => s.replace(/grey/g, "gray");
+  const colorMatch =
+    sizeMatches.find((v) =>
+      (v.attributes ?? []).some(
+        (a) =>
+          isColorAttr(a) &&
+          (a.option ?? "").trim().toLowerCase() === wantColor,
+      ),
+    ) ??
+    sizeMatches.find((v) =>
+      (v.attributes ?? []).some(
+        (a) =>
+          isColorAttr(a) &&
+          normGray((a.option ?? "").trim().toLowerCase()) ===
+            normGray(wantColor),
+      ),
+    );
+
+  if (!colorMatch) {
+    console.warn(
+      `WooCommerce: no "${color}" variation for product ${productId} size ${size}; using size-only match.`,
+    );
+  }
+  return (colorMatch ?? sizeMatches[0]).id;
 }
 
 export interface OrderLine {
   productId: number;
   variationId: number | null;
   size: string;
+  color?: string;
   qty: number;
 }
 
@@ -198,7 +234,10 @@ export async function createPendingOrder(lines: OrderLine[]): Promise<{
       product_id: l.productId,
       variation_id: l.variationId ?? 0,
       quantity: l.qty,
-      meta_data: [{ key: "Size", value: l.size }],
+      meta_data: [
+        { key: "Size", value: l.size },
+        ...(l.color ? [{ key: "Color", value: l.color }] : []),
+      ],
     })),
   };
   const order = (await wooFetch("/orders", {

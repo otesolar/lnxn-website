@@ -9,12 +9,13 @@ import {
 interface CheckoutItem {
   id: number;
   size: string;
+  color?: string;
   qty: number;
 }
 
 function isValidItem(item: unknown): item is CheckoutItem {
   if (typeof item !== "object" || item === null) return false;
-  const { id, size, qty } = item as Record<string, unknown>;
+  const { id, size, color, qty } = item as Record<string, unknown>;
   return (
     typeof id === "number" &&
     Number.isInteger(id) &&
@@ -22,6 +23,10 @@ function isValidItem(item: unknown): item is CheckoutItem {
     typeof size === "string" &&
     size.trim().length > 0 &&
     size.trim().length <= 10 &&
+    (color === undefined ||
+      (typeof color === "string" &&
+        color.trim().length > 0 &&
+        color.trim().length <= 40)) &&
     typeof qty === "number" &&
     Number.isInteger(qty) &&
     qty > 0 &&
@@ -59,8 +64,13 @@ export async function POST(request: Request) {
     const lines: OrderLine[] = await Promise.all(
       items.map(async (item) => ({
         productId: item.id,
-        variationId: await findVariationForSize(item.id, item.size.trim()),
+        variationId: await findVariationForSize(
+          item.id,
+          item.size.trim(),
+          item.color?.trim(),
+        ),
         size: item.size.trim(),
+        color: item.color?.trim(),
         qty: item.qty,
       })),
     );

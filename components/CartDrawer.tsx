@@ -20,7 +20,7 @@ export default function CartDrawer() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          items: items.map((i) => ({ id: i.id, size: i.size, qty: i.qty })),
+          items: items.map((i) => ({ id: i.id, size: i.size, color: i.color, qty: i.qty })),
         }),
       });
       const data = (await res.json().catch(() => null)) as {
