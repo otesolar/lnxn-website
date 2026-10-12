@@ -180,6 +180,11 @@ export interface OrderLine {
 /**
  * Create a pending (unpaid) WooCommerce order and return the order-pay URL
  * the customer completes payment on.
+ *
+ * NOTE: the payment URL comes from WooCommerce's own API response
+ * (`payment_url`), never hardcoded. The checkout page slug varies per store
+ * (e.g. /checkout-2/ when /checkout/ was taken) — only Woo knows the real
+ * URL, so we use theirs.
  */
 export async function createPendingOrder(lines: OrderLine[]): Promise<{
   id: number;
@@ -199,10 +204,13 @@ export async function createPendingOrder(lines: OrderLine[]): Promise<{
   const order = (await wooFetch("/orders", {
     method: "POST",
     body: JSON.stringify(body),
-  })) as { id: number; order_key: string };
+  })) as { id: number; order_key: string; payment_url: string };
+  if (!order.payment_url) {
+    throw new Error("WooCommerce did not return a payment URL for the order.");
+  }
   return {
     id: order.id,
     order_key: order.order_key,
-    payment_url: `${WOO_URL}/checkout/order-pay/${order.id}/?key=${order.order_key}`,
+    payment_url: order.payment_url,
   };
 }
