@@ -57,7 +57,7 @@ export default function PhotoHero() {
   const fade = Math.max(0, 1 - scrollY / 700);
 
   return (
-    <section className="relative flex min-h-[100svh] items-end overflow-hidden">
+    <section className="relative flex min-h-[calc(100svh-4rem)] items-end overflow-hidden">
       {/* Background: video when available, photograph otherwise */}
       <div
         className="absolute inset-0"
@@ -124,7 +124,7 @@ export default function PhotoHero() {
 
       {/* Copy */}
       <div
-        className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 md:px-10 md:pb-10"
+        className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-14 md:px-10 md:pb-10"
         style={{ transform: `translateY(${contentShift}px)`, opacity: fade }}
       >
         <div className="max-w-2xl">
@@ -132,7 +132,7 @@ export default function PhotoHero() {
             <p className="eyebrow">Limitless Next Generation</p>
           </Rise>
           <Rise mounted={mounted} delay={550}>
-            <h1 className="display mt-4 text-[clamp(2.6rem,11vw,6rem)] leading-[0.95]">
+            <h1 className="display mt-4 text-[clamp(2.4rem,10vw,6rem)] leading-[0.95]">
               Limitless
               <br />
               Next
@@ -147,7 +147,7 @@ export default function PhotoHero() {
             </p>
           </Rise>
           <Rise mounted={mounted} delay={950}>
-            <div className="mt-7 flex flex-wrap gap-4">
+            <div className="mt-6 flex flex-wrap gap-4">
               <Link href="/shop?audience=Men" className="btn btn-gold">
                 Shop Men
               </Link>
@@ -159,9 +159,9 @@ export default function PhotoHero() {
         </div>
       </div>
 
-      {/* Scroll cue */}
+      {/* Scroll cue — desktop only; it overlaps the CTAs on mobile */}
       <div
-        className={`absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-white/50 transition-opacity delay-1500 duration-1000 ${
+        className={`absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/50 transition-opacity delay-1500 duration-1000 md:flex ${
           mounted ? "opacity-100" : "opacity-0"
         }`}
         aria-hidden
