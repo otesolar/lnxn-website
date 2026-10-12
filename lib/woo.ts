@@ -4,6 +4,7 @@
 // build fail loudly if that ever happens.
 import "server-only";
 
+import { cacheLife } from "next/cache";
 import type { RawProduct } from "./catalog";
 
 const WOO_URL = (process.env.WOO_URL ?? "").replace(/\/+$/, "");
@@ -83,31 +84,55 @@ function plainText(html: string): string {
     .trim();
 }
 
-/** Fetch all published products and map them onto the site's RawProduct shape. */
+/** Fetch all published products and map them onto the site's RawProduct shape.
+ *
+ * NOTE: "use cache" is required, not just an optimization. Product pages
+ * statically prerender at build time (generateStaticParams), and with Cache
+ * Components an uncached data access during prerendering fails the build
+ * ("encountered uncached or runtime data"). Marking this function cached
+ * makes it prerender-safe.
+ *
+ * The fetch failure is caught INSIDE the cached function (returning []) so a
+ * throw can never escape during prerendering. getCatalog() treats an empty
+ * result as "Woo unavailable" and falls back to the baked-in catalog. The
+ * empty result is cached for the same 'minutes' lifetime, so a Woo outage
+ * doesn't hammer the API — the next revalidation window retries.
+ */
 export async function getLiveProducts(): Promise<RawProduct[]> {
-  const list = (await wooFetch(
-    "/products?per_page=100&status=publish",
-  )) as WooProduct[];
-  return list.map((p) => {
-    const price = parseFloat(p.price) || 0;
-    const images = (p.images ?? []).map((i) => i.src).filter(Boolean);
-    const description = plainText(p.description ?? "");
-    return {
-      id: p.id,
-      name: p.name,
-      slug: p.slug,
-      price,
-      regular_price: parseFloat(p.regular_price) || price,
-      on_sale: Boolean(p.on_sale),
-      categories: (p.categories ?? []).map((c) => c.name),
-      images,
-      image_count: images.length,
-      permalink: p.permalink ?? "",
-      // Only set when the merchant wrote one — the site falls back to its
-      // own per-product copy when this is empty.
-      ...(description ? { description } : {}),
-    };
-  });
+  "use cache";
+  cacheLife("minutes");
+
+  try {
+    const list = (await wooFetch(
+      "/products?per_page=100&status=publish",
+    )) as WooProduct[];
+    return list.map((p) => {
+      const price = parseFloat(p.price) || 0;
+      const images = (p.images ?? []).map((i) => i.src).filter(Boolean);
+      const description = plainText(p.description ?? "");
+      return {
+        id: p.id,
+        name: p.name,
+        slug: p.slug,
+        price,
+        regular_price: parseFloat(p.regular_price) || price,
+        on_sale: Boolean(p.on_sale),
+        categories: (p.categories ?? []).map((c) => c.name),
+        images,
+        image_count: images.length,
+        permalink: p.permalink ?? "",
+        // Only set when the merchant wrote one — the site falls back to its
+        // own per-product copy when this is empty.
+        ...(description ? { description } : {}),
+      };
+    });
+  } catch (err) {
+    console.warn(
+      "WooCommerce live catalog failed, using baked-in catalog:",
+      err instanceof Error ? err.message : err,
+    );
+    return [];
+  }
 }
 
 /** Fetch a single product's id and type ("simple" | "variable" | ...). */

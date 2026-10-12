@@ -17,19 +17,13 @@ import { isWooConfigured, getLiveProducts } from "./woo";
 
 /**
  * The catalog to render: live WooCommerce products when configured,
- * otherwise the baked-in fallback. Never throws — any WooCommerce error
- * falls back to the baked-in catalog so the site keeps working.
+ * otherwise the baked-in fallback. Never throws — getLiveProducts() catches
+ * its own failures and returns [] so this can fall back to the baked-in
+ * catalog and the site keeps working.
  */
 export async function getCatalog(): Promise<Product[]> {
   if (!isWooConfigured()) return fallbackProducts;
-  try {
-    const live = await getLiveProducts();
-    return augmentProducts(live);
-  } catch (err) {
-    console.warn(
-      "WooCommerce live catalog failed, using baked-in catalog:",
-      err instanceof Error ? err.message : err,
-    );
-    return fallbackProducts;
-  }
+  const live = await getLiveProducts();
+  if (live.length === 0) return fallbackProducts;
+  return augmentProducts(live);
 }
