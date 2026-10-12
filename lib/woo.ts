@@ -213,6 +213,19 @@ export interface OrderLine {
   qty: number;
 }
 
+/** Customer address collected on the storefront before order creation. */
+export interface CustomerInfo {
+  email: string;
+  firstName: string;
+  lastName: string;
+  address1: string;
+  address2?: string;
+  city: string;
+  state: string;
+  postcode: string;
+  country: string;
+}
+
 /**
  * Create a pending (unpaid) WooCommerce order and return the order-pay URL
  * the customer completes payment on.
@@ -222,14 +235,29 @@ export interface OrderLine {
  * (e.g. /checkout-2/ when /checkout/ was taken) — only Woo knows the real
  * URL, so we use theirs.
  */
-export async function createPendingOrder(lines: OrderLine[]): Promise<{
+export async function createPendingOrder(
+  lines: OrderLine[],
+  customer: CustomerInfo,
+): Promise<{
   id: number;
   order_key: string;
   payment_url: string;
 }> {
+  const address = {
+    first_name: customer.firstName,
+    last_name: customer.lastName,
+    address_1: customer.address1,
+    address_2: customer.address2 ?? "",
+    city: customer.city,
+    state: customer.state,
+    postcode: customer.postcode,
+    country: customer.country,
+  };
   const body = {
     status: "pending",
     set_paid: false,
+    billing: { ...address, email: customer.email },
+    shipping: address,
     line_items: lines.map((l) => ({
       product_id: l.productId,
       variation_id: l.variationId ?? 0,

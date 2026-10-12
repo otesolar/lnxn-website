@@ -4,6 +4,7 @@ import {
   findVariationForSize,
   createPendingOrder,
   type OrderLine,
+  type CustomerInfo,
 } from "@/lib/woo";
 
 interface CheckoutItem {
@@ -34,6 +35,50 @@ function isValidItem(item: unknown): item is CheckoutItem {
   );
 }
 
+function isNonEmptyString(v: unknown, max: number): v is string {
+  return (
+    typeof v === "string" && v.trim().length > 0 && v.trim().length <= max
+  );
+}
+
+function isValidCustomer(c: unknown): c is CustomerInfo {
+  if (typeof c !== "object" || c === null) return false;
+  const o = c as Record<string, unknown>;
+  const email = o.email;
+  const emailOk =
+    typeof email === "string" &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim()) &&
+    email.trim().length <= 100;
+  const country = o.country;
+  const countryOk =
+    typeof country === "string" && /^[A-Z]{2}$/.test(country.trim());
+  return (
+    emailOk &&
+    isNonEmptyString(o.firstName, 50) &&
+    isNonEmptyString(o.lastName, 50) &&
+    isNonEmptyString(o.address1, 100) &&
+    (o.address2 === undefined || isNonEmptyString(o.address2, 100)) &&
+    isNonEmptyString(o.city, 50) &&
+    isNonEmptyString(o.state, 50) &&
+    isNonEmptyString(o.postcode, 20) &&
+    countryOk
+  );
+}
+
+function toCustomerInfo(c: CustomerInfo): CustomerInfo {
+  return {
+    email: c.email.trim(),
+    firstName: c.firstName.trim(),
+    lastName: c.lastName.trim(),
+    address1: c.address1.trim(),
+    address2: c.address2?.trim() || undefined,
+    city: c.city.trim(),
+    state: c.state.trim(),
+    postcode: c.postcode.trim(),
+    country: c.country.trim().toUpperCase(),
+  };
+}
+
 export async function POST(request: Request) {
   let body: unknown;
   try {
@@ -46,12 +91,20 @@ export async function POST(request: Request) {
   }
 
   const items = (body as Record<string, unknown> | null)?.items;
+  const customerRaw = (body as Record<string, unknown> | null)?.customer;
   if (!Array.isArray(items) || items.length === 0 || !items.every(isValidItem)) {
     return NextResponse.json(
       { error: "Your cart looks empty or invalid. Please try again." },
       { status: 400 },
     );
   }
+  if (!isValidCustomer(customerRaw)) {
+    return NextResponse.json(
+      { error: "Please complete your shipping details." },
+      { status: 400 },
+    );
+  }
+  const customer = toCustomerInfo(customerRaw);
 
   if (!isWooConfigured()) {
     return NextResponse.json(
@@ -74,7 +127,7 @@ export async function POST(request: Request) {
         qty: item.qty,
       })),
     );
-    const order = await createPendingOrder(lines);
+    const order = await createPendingOrder(lines, customer);
     return NextResponse.json({ payment_url: order.payment_url });
   } catch (err) {
     // Log the detail server-side; the customer only gets a friendly message.
