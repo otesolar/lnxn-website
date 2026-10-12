@@ -13,6 +13,7 @@ import {
 import { getSizeChart, getSizes } from "@/lib/size-charts";
 import { getColorways, defaultColorway } from "@/lib/product-colors";
 import { getProductSpec } from "@/lib/product-specs";
+import { getProductDescription } from "@/lib/product-descriptions";
 import SizeGuide from "@/components/SizeGuide";
 import ProductCard from "@/components/ProductCard";
 
@@ -114,7 +115,7 @@ export default function ProductView({ product }: { product: Product }) {
             {formatPrice(product.price)}
           </p>
           <p className="mt-5 leading-relaxed text-white/65">
-            {LINE_COPY[product.line]}
+            {getProductDescription(product.slug) ?? LINE_COPY[product.line]}
           </p>
 
           {colorways.length > 0 && (
