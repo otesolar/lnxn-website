@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import ProductView from "@/components/ProductView";
-import { getProduct, products } from "@/lib/catalog";
+import { products } from "@/lib/catalog";
+import { getCatalog } from "@/lib/catalog-server";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -12,7 +13,8 @@ export default async function ProductPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const catalog = await getCatalog();
+  const product = catalog.find((p) => p.slug === slug);
   if (!product) notFound();
 
   return (

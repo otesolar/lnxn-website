@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/lib/cart";
@@ -7,6 +8,40 @@ import { formatPrice } from "@/lib/catalog";
 
 export default function CartDrawer() {
   const { items, count, subtotal, isOpen, closeCart, removeItem, setQty } = useCart();
+  const [placing, setPlacing] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
+
+  async function handleCheckout() {
+    if (placing) return;
+    setPlacing(true);
+    setCheckoutError(null);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: items.map((i) => ({ id: i.id, size: i.size, qty: i.qty })),
+        }),
+      });
+      const data = (await res.json().catch(() => null)) as {
+        payment_url?: string;
+        error?: string;
+      } | null;
+      if (!res.ok || !data?.payment_url) {
+        throw new Error(
+          typeof data?.error === "string" && data.error
+            ? data.error
+            : "We couldn't start your checkout just now. Please try again.",
+        );
+      }
+      window.location.href = data.payment_url;
+    } catch (err) {
+      setCheckoutError(
+        err instanceof Error ? err.message : "Something went wrong. Please try again.",
+      );
+      setPlacing(false);
+    }
+  }
 
   return (
     <>
@@ -116,9 +151,24 @@ export default function CartDrawer() {
             <p className="mt-1 text-xs text-smoke">
               Shipping & taxes calculated at checkout.
             </p>
-            <a href="https://thelnxn.com/checkout" className="btn btn-gold mt-4 w-full">
-              Checkout Securely
-            </a>
+            {checkoutError ? (
+              <div className="mt-4 border border-red-900/70 bg-red-950/40 px-4 py-3">
+                <p className="text-sm text-red-200">{checkoutError}</p>
+                <button
+                  onClick={handleCheckout}
+                  className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-red-200 underline hover:text-white"
+                >
+                  Try again
+                </button>
+              </div>
+            ) : null}
+            <button
+              onClick={handleCheckout}
+              disabled={placing}
+              className="btn btn-gold mt-4 w-full disabled:cursor-wait disabled:opacity-60"
+            >
+              {placing ? "Placing your order…" : "Checkout Securely"}
+            </button>
             <button
               onClick={closeCart}
               className="mt-3 w-full text-center text-xs uppercase tracking-[0.2em] text-white/60 hover:text-gold-light"

@@ -11,6 +11,11 @@ export interface RawProduct {
   images?: string[];
   image_count: number;
   permalink: string;
+  /**
+   * Per-product description from WooCommerce (plain text). Takes precedence
+   * over lib/product-descriptions.ts when present.
+   */
+  description?: string;
 }
 
 export type Audience = "Men" | "Women" | "Kids";
@@ -45,10 +50,14 @@ function parseName(p: RawProduct): Pick<Product, "audience" | "line" | "garment"
   return { audience, line, garment };
 }
 
-export const products: Product[] = (raw as RawProduct[]).map((p) => ({
-  ...p,
-  ...parseName(p),
-}));
+export function augmentProducts(rawList: RawProduct[]): Product[] {
+  return rawList.map((p) => ({
+    ...p,
+    ...parseName(p),
+  }));
+}
+
+export const products: Product[] = augmentProducts(raw as RawProduct[]);
 
 export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);

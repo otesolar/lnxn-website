@@ -115,7 +115,9 @@ export default function ProductView({ product }: { product: Product }) {
             {formatPrice(product.price)}
           </p>
           <p className="mt-5 leading-relaxed text-white/65">
-            {getProductDescription(product.slug) ?? LINE_COPY[product.line]}
+            {product.description?.trim() ||
+              getProductDescription(product.slug) ||
+              LINE_COPY[product.line]}
           </p>
 
           {colorways.length > 0 && (
