@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/lib/cart";
 import { formatPrice } from "@/lib/catalog";
+import { getRegionsForCountry } from "@/lib/regions";
 
 const COUNTRIES = [
   { code: "CA", name: "Canada" },
@@ -345,15 +346,38 @@ export default function CartDrawer() {
                   </div>
                   <div>
                     <label htmlFor="co-state" className={labelCls}>Province / State</label>
-                    <input
-                      id="co-state"
-                      type="text"
-                      autoComplete="address-level1"
-                      placeholder="e.g. Manitoba"
-                      value={form.state}
-                      onChange={(e) => set("state", e.target.value)}
-                      className={inputCls}
-                    />
+                    {(() => {
+                      const regions = getRegionsForCountry(form.country);
+                      if (regions) {
+                        return (
+                          <select
+                            id="co-state"
+                            autoComplete="address-level1"
+                            value={form.state}
+                            onChange={(e) => set("state", e.target.value)}
+                            className={inputCls}
+                          >
+                            <option value="">Select…</option>
+                            {regions.map((r) => (
+                              <option key={r.code} value={r.code}>
+                                {r.name} ({r.code})
+                              </option>
+                            ))}
+                          </select>
+                        );
+                      }
+                      return (
+                        <input
+                          id="co-state"
+                          type="text"
+                          autoComplete="address-level1"
+                          placeholder="Province / State"
+                          value={form.state}
+                          onChange={(e) => set("state", e.target.value)}
+                          className={inputCls}
+                        />
+                      );
+                    })()}
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
@@ -373,7 +397,10 @@ export default function CartDrawer() {
                     <select
                       id="co-country"
                       value={form.country}
-                      onChange={(e) => set("country", e.target.value)}
+                      onChange={(e) => {
+                        set("country", e.target.value);
+                        set("state", "");
+                      }}
                       className={inputCls}
                     >
                       {COUNTRIES.map((c) => (
