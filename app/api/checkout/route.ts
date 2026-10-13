@@ -3,6 +3,7 @@ import {
   isWooConfigured,
   findVariationForSize,
   createPendingOrder,
+  findOrCreateCustomer,
   getWooPrice,
   getTaxRates,
   calculateWooTax,
@@ -164,7 +165,12 @@ export async function POST(request: Request) {
       );
     }
 
-    const order = await createPendingOrder(lines, customer, taxes);
+    const order = await createPendingOrder(
+      lines,
+      customer,
+      taxes,
+      await findOrCreateCustomer(customer),
+    );
     return NextResponse.json({ payment_url: order.payment_url });
   } catch (err) {
     // Log the detail server-side; the customer only gets a friendly message.

@@ -318,6 +318,62 @@ export interface CustomerInfo {
 }
 
 /**
+ * Find an existing WooCommerce customer by email, or create one.
+ * Attaching orders to a customer (instead of pure guest) removes the
+ * "guest order" warning on the payment page, and lets the customer see
+ * order history if they later register on the store with the same email.
+ * Never throws — falls back to guest (customer_id 0) on any failure.
+ */
+export async function findOrCreateCustomer(
+  customer: CustomerInfo,
+): Promise<number> {
+  try {
+    const address = {
+      first_name: customer.firstName,
+      last_name: customer.lastName,
+      address_1: customer.address1,
+      address_2: customer.address2 ?? "",
+      city: customer.city,
+      state: customer.state,
+      postcode: customer.postcode,
+      country: customer.country,
+    };
+    // Look for an existing customer with this email.
+    const found = (await wooFetch(
+      `/customers?email=${encodeURIComponent(customer.email)}`,
+    )) as { id: number }[];
+    if (found.length > 0) {
+      const id = found[0].id;
+      // Refresh their saved addresses with the latest.
+      await wooFetch(`/customers/${id}`, {
+        method: "PUT",
+        body: JSON.stringify({ billing: address, shipping: address }),
+      }).catch(() => {});
+      return id;
+    }
+    // Create a new customer (no password — they can set one later via
+    // "lost password" on the store if they want an account).
+    const created = (await wooFetch("/customers", {
+      method: "POST",
+      body: JSON.stringify({
+        email: customer.email,
+        first_name: customer.firstName,
+        last_name: customer.lastName,
+        billing: address,
+        shipping: address,
+      }),
+    })) as { id: number };
+    return created.id ?? 0;
+  } catch (err) {
+    console.warn(
+      "WooCommerce customer lookup/create failed, using guest order:",
+      err instanceof Error ? err.message : err,
+    );
+    return 0;
+  }
+}
+
+/**
  * Create a pending (unpaid) WooCommerce order and return the order-pay URL
  * the customer completes payment on.
  *
@@ -330,6 +386,7 @@ export async function createPendingOrder(
   lines: OrderLine[],
   customer: CustomerInfo,
   taxes: OrderTaxLine[] = [],
+  customerId: number = 0,
 ): Promise<{
   id: number;
   order_key: string;
@@ -348,6 +405,7 @@ export async function createPendingOrder(
   const body = {
     status: "pending",
     set_paid: false,
+    customer_id: customerId,
     billing: { ...address, email: customer.email },
     shipping: address,
     tax_lines: taxes.map((t) => ({
