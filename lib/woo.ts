@@ -135,6 +135,13 @@ export async function getLiveProducts(): Promise<RawProduct[]> {
   }
 }
 
+/** Fetch a product's current price (dollars) from WooCommerce. */
+export async function getWooPrice(productId: number): Promise<number> {
+  const p = (await wooFetch(`/products/${productId}`)) as { price?: string };
+  const n = parseFloat(p.price ?? "");
+  return Number.isFinite(n) ? n : 0;
+}
+
 /** Fetch a single product's id and type ("simple" | "variable" | ...). */
 export async function getWooProduct(
   id: number,
@@ -213,6 +220,13 @@ export interface OrderLine {
   qty: number;
 }
 
+/** A single tax line to attach to the WooCommerce order. */
+export interface OrderTaxLine {
+  label: string;
+  /** Tax amount in dollars, e.g. 2.5 for $2.50. */
+  amount: number;
+}
+
 /** Customer address collected on the storefront before order creation. */
 export interface CustomerInfo {
   email: string;
@@ -238,6 +252,7 @@ export interface CustomerInfo {
 export async function createPendingOrder(
   lines: OrderLine[],
   customer: CustomerInfo,
+  taxes: OrderTaxLine[] = [],
 ): Promise<{
   id: number;
   order_key: string;
@@ -258,6 +273,12 @@ export async function createPendingOrder(
     set_paid: false,
     billing: { ...address, email: customer.email },
     shipping: address,
+    tax_lines: taxes.map((t) => ({
+      label: t.label,
+      tax_total: t.amount.toFixed(2),
+      shipping_tax_total: "0.00",
+      compound: false,
+    })),
     line_items: lines.map((l) => ({
       product_id: l.productId,
       variation_id: l.variationId ?? 0,

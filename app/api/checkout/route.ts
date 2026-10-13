@@ -3,9 +3,12 @@ import {
   isWooConfigured,
   findVariationForSize,
   createPendingOrder,
+  getWooPrice,
   type OrderLine,
   type CustomerInfo,
+  type OrderTaxLine,
 } from "@/lib/woo";
+import { calculateStripeTax } from "@/lib/stripe-tax";
 
 interface CheckoutItem {
   id: number;
@@ -127,7 +130,31 @@ export async function POST(request: Request) {
         qty: item.qty,
       })),
     );
-    const order = await createPendingOrder(lines, customer);
+
+    // Calculate tax via Stripe Tax API (graceful: order proceeds without
+    // tax if Stripe is unreachable — logged server-side).
+    let taxes: OrderTaxLine[] = [];
+    try {
+      const prices = await Promise.all(lines.map((l) => getWooPrice(l.productId)));
+      const stripeItems = lines.map((l, i) => ({
+        amountCents: Math.round(prices[i] * 100) * l.qty,
+        reference: `lnxn-${l.productId}-${l.variationId ?? 0}`,
+      }));
+      const tax = await calculateStripeTax(stripeItems, customer);
+      if (tax && tax.totalTaxCents > 0) {
+        taxes = tax.breakdown.map((b) => ({
+          label: b.label,
+          amount: b.amountCents / 100,
+        }));
+      }
+    } catch (taxErr) {
+      console.error(
+        "Tax calculation failed, proceeding without tax:",
+        taxErr instanceof Error ? taxErr.message : taxErr,
+      );
+    }
+
+    const order = await createPendingOrder(lines, customer, taxes);
     return NextResponse.json({ payment_url: order.payment_url });
   } catch (err) {
     // Log the detail server-side; the customer only gets a friendly message.
