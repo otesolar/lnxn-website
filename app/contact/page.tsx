@@ -16,17 +16,35 @@ export default function ContactPage() {
   const [email, setEmail] = useState("");
   const [topic, setTopic] = useState(TOPICS[0]);
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
+  const [error, setError] = useState("");
 
   const inputCls =
     "w-full border border-line bg-coal px-4 py-3 text-sm outline-none placeholder:text-smoke focus:border-gold";
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const subject = encodeURIComponent(`[LNXN Contact] ${topic} — ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nTopic: ${topic}\n\n${message}`,
-    );
-    window.location.href = `mailto:info@thelnxn.com?subject=${subject}&body=${body}`;
+    setStatus("sending");
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, topic, message }),
+      });
+      const data = (await res.json().catch(() => null)) as {
+        error?: string;
+      } | null;
+      if (!res.ok) throw new Error(data?.error ?? "Something went wrong.");
+      setStatus("sent");
+    } catch (err) {
+      setStatus("error");
+      setError(
+        err instanceof Error ? err.message : "Something went wrong.",
+      );
+    }
   }
 
   return (
@@ -111,12 +129,30 @@ export default function ContactPage() {
             aria-label="Message"
             className={inputCls}
           />
-          <button type="submit" className="btn btn-gold w-full sm:w-auto">
-            Send Message
+          <button
+            type="submit"
+            disabled={status === "sending" || status === "sent"}
+            className="btn btn-gold w-full sm:w-auto disabled:opacity-60"
+          >
+            {status === "sending"
+              ? "Sending…"
+              : status === "sent"
+                ? "Message Sent ✓"
+                : "Send Message"}
           </button>
-          <p className="text-xs text-smoke">
-            This opens your email app with the message addressed to us.
-          </p>
+          {status === "sent" && (
+            <p className="text-sm text-gold-light">
+              Thanks — we&apos;ll get back to you soon.
+            </p>
+          )}
+          {status === "error" && (
+            <p className="text-sm text-red-400">{error}</p>
+          )}
+          {status === "idle" && (
+            <p className="text-xs text-smoke">
+              We&apos;ll reply to the email address you provide.
+            </p>
+          )}
         </form>
       </div>
     </div>
