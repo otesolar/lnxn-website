@@ -142,6 +142,83 @@ export async function getWooPrice(productId: number): Promise<number> {
   return Number.isFinite(n) ? n : 0;
 }
 
+/** A WooCommerce tax rate row. */
+export interface WooTaxRate {
+  id: number;
+  country: string;
+  state: string;
+  postcode: string;
+  city: string;
+  rate: string;
+  name: string;
+  priority: number;
+  compound: boolean;
+}
+
+/** Fetch all configured tax rates from WooCommerce. */
+export async function getTaxRates(): Promise<WooTaxRate[]> {
+  return (await wooFetch("/taxes?per_page=100")) as WooTaxRate[];
+}
+
+/** Map province/state names to ISO codes for rate matching. */
+const STATE_CODES: Record<string, string> = {
+  alberta: "AB", "british columbia": "BC", manitoba: "MB",
+  "new brunswick": "NB", "newfoundland and labrador": "NL", newfoundland: "NL",
+  "nova scotia": "NS", "northwest territories": "NT", nunavut: "NU",
+  ontario: "ON", "prince edward island": "PE", quebec: "QC",
+  saskatchewan: "SK", yukon: "YT",
+};
+
+function toStateCode(state: string): string {
+  const t = state.trim();
+  if (/^[A-Za-z]{2}$/.test(t)) return t.toUpperCase();
+  return STATE_CODES[t.toLowerCase()] ?? t.toUpperCase();
+}
+
+/**
+ * Calculate tax for a subtotal using WooCommerce's configured rates.
+ * Matches rates by country/state (wildcard-safe), applies in priority order,
+ * honoring compound flags. Returns per-rate breakdown in cents.
+ */
+export function calculateWooTax(
+  rates: WooTaxRate[],
+  subtotalCents: number,
+  country: string,
+  state: string,
+): { label: string; amountCents: number }[] {
+  const wantCountry = country.trim().toUpperCase();
+  const wantState = toStateCode(state);
+  const matching = rates.filter((r) => {
+    const c = (r.country || "").toUpperCase();
+    const s = (r.state || "").toUpperCase();
+    return (!c || c === wantCountry) && (!s || s === wantState);
+  });
+  if (matching.length === 0) return [];
+
+  const byPriority = new Map<number, WooTaxRate[]>();
+  for (const r of matching) {
+    const p = r.priority ?? 1;
+    if (!byPriority.has(p)) byPriority.set(p, []);
+    byPriority.get(p)!.push(r);
+  }
+
+  const result: { label: string; amountCents: number }[] = [];
+  let accumulatedTax = 0;
+  for (const priority of [...byPriority.keys()].sort((a, b) => a - b)) {
+    for (const rate of byPriority.get(priority)!) {
+      const pct = parseFloat(rate.rate);
+      if (!Number.isFinite(pct) || pct <= 0) continue;
+      const base = rate.compound ? subtotalCents + accumulatedTax : subtotalCents;
+      const amount = Math.round((base * pct) / 100);
+      if (amount > 0) {
+        result.push({ label: rate.name || "Tax", amountCents: amount });
+        accumulatedTax += amount;
+      }
+    }
+  }
+  return result;
+}
+
 /** Fetch a single product's id and type ("simple" | "variable" | ...). */
 export async function getWooProduct(
   id: number,

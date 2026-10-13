@@ -4,11 +4,12 @@ import {
   findVariationForSize,
   createPendingOrder,
   getWooPrice,
+  getTaxRates,
+  calculateWooTax,
   type OrderLine,
   type CustomerInfo,
   type OrderTaxLine,
 } from "@/lib/woo";
-import { calculateStripeTax } from "@/lib/stripe-tax";
 
 interface CheckoutItem {
   id: number;
@@ -131,21 +132,30 @@ export async function POST(request: Request) {
       })),
     );
 
-    // Calculate tax via Stripe Tax API (graceful: order proceeds without
-    // tax if Stripe is unreachable — logged server-side).
+    // Calculate tax from WooCommerce's configured rates (graceful: order
+    // proceeds without tax if rates can't be loaded — logged server-side).
     let taxes: OrderTaxLine[] = [];
     try {
       const prices = await Promise.all(lines.map((l) => getWooPrice(l.productId)));
-      const stripeItems = lines.map((l, i) => ({
-        amountCents: Math.round(prices[i] * 100) * l.qty,
-        reference: `lnxn-${l.productId}-${l.variationId ?? 0}`,
+      const subtotalCents = lines.reduce(
+        (sum, l, i) => sum + Math.round(prices[i] * 100) * l.qty,
+        0,
+      );
+      const rates = await getTaxRates();
+      const breakdown = calculateWooTax(
+        rates,
+        subtotalCents,
+        customer.country,
+        customer.state,
+      );
+      taxes = breakdown.map((b) => ({
+        label: b.label,
+        amount: b.amountCents / 100,
       }));
-      const tax = await calculateStripeTax(stripeItems, customer);
-      if (tax && tax.totalTaxCents > 0) {
-        taxes = tax.breakdown.map((b) => ({
-          label: b.label,
-          amount: b.amountCents / 100,
-        }));
+      if (taxes.length === 0) {
+        console.warn(
+          `No tax rates matched for ${customer.country}/${customer.state}; order will have no tax.`,
+        );
       }
     } catch (taxErr) {
       console.error(
