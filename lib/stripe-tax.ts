@@ -14,6 +14,45 @@ const STRIPE_API = "https://api.stripe.com/v1";
 /** Stripe tax code for general tangible goods (apparel). */
 const TAX_CODE_APPAREL = "txcd_99999999";
 
+/** Map province/state names to ISO codes (Stripe needs codes, not names). */
+const STATE_CODES: Record<string, string> = {
+  // Canada
+  alberta: "AB",
+  "british columbia": "BC",
+  manitoba: "MB",
+  "new brunswick": "NB",
+  "newfoundland and labrador": "NL",
+  newfoundland: "NL",
+  "nova scotia": "NS",
+  "northwest territories": "NT",
+  nunavut: "NU",
+  ontario: "ON",
+  "prince edward island": "PE",
+  quebec: "QC",
+  saskatchewan: "SK",
+  yukon: "YT",
+  // US (common)
+  alabama: "AL", alaska: "AK", arizona: "AZ", arkansas: "AR", california: "CA",
+  colorado: "CO", connecticut: "CT", delaware: "DE", florida: "FL", georgia: "GA",
+  hawaii: "HI", idaho: "ID", illinois: "IL", indiana: "IN", iowa: "IA",
+  kansas: "KS", kentucky: "KY", louisiana: "LA", maine: "ME", maryland: "MD",
+  massachusetts: "MA", michigan: "MI", minnesota: "MN", mississippi: "MS",
+  missouri: "MO", montana: "MT", nebraska: "NE", nevada: "NV",
+  "new hampshire": "NH", "new jersey": "NJ", "new mexico": "NM",
+  "new york": "NY", "north carolina": "NC", "north dakota": "ND", ohio: "OH",
+  oklahoma: "OK", oregon: "OR", pennsylvania: "PA", "rhode island": "RI",
+  "south carolina": "SC", "south dakota": "SD", tennessee: "TN", texas: "TX",
+  utah: "UT", vermont: "VT", virginia: "VA", washington: "WA",
+  "west virginia": "WV", wisconsin: "WI", wyoming: "WY",
+  "district of columbia": "DC",
+};
+
+function toStateCode(state: string): string {
+  const t = state.trim();
+  if (/^[A-Za-z]{2}$/.test(t)) return t.toUpperCase();
+  return STATE_CODES[t.toLowerCase()] ?? t;
+}
+
 export interface StripeLineItem {
   /** Amount in cents, e.g. 2499 for $24.99. */
   amountCents: number;
@@ -46,7 +85,7 @@ export async function calculateStripeTax(
     params.append("customer_details[address][line2]", customer.address2);
   }
   params.append("customer_details[address][city]", customer.city);
-  params.append("customer_details[address][state]", customer.state);
+  params.append("customer_details[address][state]", toStateCode(customer.state));
   params.append("customer_details[address][postal_code]", customer.postcode);
   params.append("customer_details[address][country]", customer.country);
 
