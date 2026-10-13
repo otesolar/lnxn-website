@@ -165,12 +165,12 @@ export async function POST(request: Request) {
       );
     }
 
-    const order = await createPendingOrder(
-      lines,
-      customer,
-      taxes,
-      await findOrCreateCustomer(customer),
-    );
+    // Find or create the WooCommerce customer record for future order history,
+    // but keep the order itself as guest (customer_id 0) — attaching a
+    // customer_id makes WooCommerce require that customer to be logged in
+    // to pay, which breaks our guest payment flow.
+    await findOrCreateCustomer(customer).catch(() => {});
+    const order = await createPendingOrder(lines, customer, taxes, 0);
     return NextResponse.json({ payment_url: order.payment_url });
   } catch (err) {
     // Log the detail server-side; the customer only gets a friendly message.
