@@ -103,43 +103,43 @@
  ],
  "lnxn-heritage-crew-mens": [
   {
-   "name": "White",
-   "hex": "#F4F4F4",
+   "name": "Ivory White",
+   "hex": "#F2EFE8",
    "images": [
     "/products/lnxn-heritage-crew-mens-5.png"
    ]
   },
   {
-   "name": "Black",
+   "name": "Onyx Black",
    "hex": "#1C1C1E",
    "images": [
     "/products/lnxn-heritage-crew-mens-4.png"
    ]
   },
   {
-   "name": "Sport Grey",
-   "hex": "#B5B5B8",
+   "name": "Stone Grey",
+   "hex": "#B9B9B9",
    "images": [
     "/products/lnxn-heritage-crew-mens-0.png",
     "/products/lnxn-heritage-crew-mens-2.png"
    ]
   },
   {
-   "name": "Maroon",
+   "name": "Wine Red",
    "hex": "#6E2434",
    "images": [
     "/products/lnxn-heritage-crew-mens-1.png"
    ]
   },
   {
-   "name": "Dark Heather",
-   "hex": "#454548",
+   "name": "Carbon Grey",
+   "hex": "#4A4A4D",
    "images": [
     "/products/lnxn-heritage-crew-mens-6.png"
    ]
   },
   {
-   "name": "Navy",
+   "name": "Midnight Navy",
    "hex": "#232E4A",
    "images": [
     "/products/lnxn-heritage-crew-mens-3.png"
@@ -987,7 +987,7 @@
    ]
   },
   {
-   "name": "Stone Gray",
+   "name": "Stone Grey",
    "hex": "#B9B9B9",
    "images": [
     "/products/lnxn-heritage-crew-5.png",
@@ -1003,7 +1003,7 @@
    ]
   },
   {
-   "name": "Carbon Gray",
+   "name": "Carbon Grey",
    "hex": "#4A4A4D",
    "images": [
     "/products/lnxn-heritage-crew-0.png",
