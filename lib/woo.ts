@@ -231,9 +231,21 @@ export async function getWooProduct(
 }
 
 /**
+ * Site color name -> the names it may appear as in WooCommerce/Printify.
+ * The site shows his chosen names; Woo variations keep the supplier name
+ * unless renamed there too. Tried after the exact and Gray/Grey-normalized
+ * matches, before the size-only fallback, so checkout always lands on the
+ * exact variation/SKU that Printify fulfills.
+ */
+const COLOR_ALIASES: Record<string, string[]> = {
+  "tempest grey": ["storm"],
+};
+
+/**
  * For variable products, find the variation id matching Size and (when given)
  * Color, case-insensitive. Tries an exact color match first, then a
- * Gray/Grey-normalized match (the catalog uses both spellings). Falls back to
+ * Gray/Grey-normalized match (the catalog uses both spellings), then any
+ * known site->Woo color aliases. Falls back to
  * a size-only match with a warning if the color matches nothing, so checkout
  * never breaks on a color-name mismatch. Returns null for simple products or
  * when no size matches.
@@ -264,6 +276,7 @@ export async function findVariationForSize(
   const isColorAttr = (a: { name?: string }) =>
     /colou?r/i.test(a.name ?? "");
   const normGray = (s: string) => s.replace(/grey/g, "gray");
+  const aliasNames = COLOR_ALIASES[wantColor] ?? [];
   const colorMatch =
     sizeMatches.find((v) =>
       (v.attributes ?? []).some(
@@ -279,7 +292,16 @@ export async function findVariationForSize(
           normGray((a.option ?? "").trim().toLowerCase()) ===
             normGray(wantColor),
       ),
-    );
+    ) ??
+    (aliasNames.length > 0
+      ? sizeMatches.find((v) =>
+          (v.attributes ?? []).some(
+            (a) =>
+              isColorAttr(a) &&
+              aliasNames.includes((a.option ?? "").trim().toLowerCase()),
+          ),
+        )
+      : undefined);
 
   if (!colorMatch) {
     console.warn(
