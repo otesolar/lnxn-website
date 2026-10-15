@@ -8,14 +8,16 @@ export const SHIPPING_RATES = {
   CREW_HOODIE: 8.99,
   /** Cropped hoodie */
   CROPPED: 10.99,
+  /** Added per additional item beyond the first (mirrors Printify's model) */
+  ADDITIONAL_ITEM: 3.0,
   /** Free shipping at or above this product subtotal */
   FREE_THRESHOLD: 80,
 } as const;
 
 /**
  * Calculate the flat-rate shipping for an order.
- * Highest tier wins for mixed carts. Free at/above the threshold.
- * Subtotal should be the product total before tax and shipping.
+ * First item at the highest applicable tier rate, $3 per additional item.
+ * Free at/above the threshold. Subtotal is the product total before tax/shipping.
  */
 export function calculateShipping(
   items: { product: Product; qty: number; unitPrice: number }[],
@@ -23,16 +25,24 @@ export function calculateShipping(
   const subtotal = items.reduce((sum, i) => sum + i.unitPrice * i.qty, 0);
   if (subtotal >= SHIPPING_RATES.FREE_THRESHOLD) return 0;
 
-  let rate: number = SHIPPING_RATES.TEE_KIDS;
-  for (const { product } of items) {
+  let highestTier: number = SHIPPING_RATES.TEE_KIDS;
+  let totalUnits = 0;
+  for (const { product, qty } of items) {
+    totalUnits += qty;
     if (product.garment === "Cropped Hoodie") {
-      return SHIPPING_RATES.CROPPED;
-    }
-    if (product.garment === "Crew" || product.garment === "Hoodie") {
-      rate = SHIPPING_RATES.CREW_HOODIE;
+      highestTier = SHIPPING_RATES.CROPPED;
+    } else if (
+      (product.garment === "Crew" || product.garment === "Hoodie") &&
+      highestTier !== SHIPPING_RATES.CROPPED
+    ) {
+      highestTier = SHIPPING_RATES.CREW_HOODIE;
     }
   }
-  return rate;
+  if (totalUnits === 0) return 0;
+  const additionalUnits = totalUnits - 1;
+  return Math.round(
+    (highestTier + additionalUnits * SHIPPING_RATES.ADDITIONAL_ITEM) * 100,
+  ) / 100;
 }
 
 /** Human-readable label for the shipping method on the WooCommerce order. */
