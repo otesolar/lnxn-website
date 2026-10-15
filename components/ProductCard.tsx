@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { formatPrice, productImages, type Product } from "@/lib/catalog";
+import { formatPrice, hasSizeSurcharges, productImages, type Product } from "@/lib/catalog";
 
 export default function ProductCard({ product }: { product: Product }) {
   const imgs = productImages(product);
@@ -56,7 +56,9 @@ export default function ProductCard({ product }: { product: Product }) {
         <h3 className="mt-1.5 font-semibold text-white leading-snug group-hover:text-gold-light transition-colors">
           {product.name}
         </h3>
-        <p className="mt-1 text-smoke">{formatPrice(product.price)}</p>
+        <p className="mt-1 text-smoke">
+          {hasSizeSurcharges(product) ? `From ${formatPrice(product.price)}` : formatPrice(product.price)}
+        </p>
       </div>
     </Link>
   );
