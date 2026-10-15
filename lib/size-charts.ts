@@ -10,7 +10,7 @@ export interface SizeChart {
 
 const adultHoodie: SizeChart = {
   title: "Adult Hoodie",
-  sizes: ["S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"],
+  sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
   rows: [
     { size: "S", width: 20.08, length: 27.17, sleeve: 33.5 },
     { size: "M", width: 22.05, length: 27.95, sleeve: 34.5 },
@@ -18,8 +18,6 @@ const adultHoodie: SizeChart = {
     { size: "XL", width: 25.98, length: 29.92, sleeve: 36.5 },
     { size: "2XL", width: 27.99, length: 31.1, sleeve: 37.5 },
     { size: "3XL", width: 29.92, length: 31.89, sleeve: 38.5 },
-    { size: "4XL", width: 31.89, length: 33.07, sleeve: 39.5 },
-    { size: "5XL", width: 33.86, length: 33.86, sleeve: 40.5 },
   ],
 };
 
@@ -36,7 +34,7 @@ const kidsHoodie: SizeChart = {
 
 const adultCrew: SizeChart = {
   title: "Adult Crewneck",
-  sizes: ["S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"],
+  sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
   rows: [
     { size: "S", width: 20.0, length: 27.0, sleeve: 33.5 },
     { size: "M", width: 22.01, length: 28.0, sleeve: 34.5 },
@@ -44,8 +42,6 @@ const adultCrew: SizeChart = {
     { size: "XL", width: 26.0, length: 30.0, sleeve: 36.5 },
     { size: "2XL", width: 28.0, length: 31.0, sleeve: 37.5 },
     { size: "3XL", width: 30.0, length: 32.0, sleeve: 38.5 },
-    { size: "4XL", width: 32.0, length: 33.0, sleeve: 39.5 },
-    { size: "5XL", width: 34.0, length: 34.0, sleeve: 40.5 },
   ],
 };
 
@@ -63,7 +59,7 @@ const kidsCrew: SizeChart = {
 
 const adultTee: SizeChart = {
   title: "Adult Tee",
-  sizes: ["S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"],
+  sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
   rows: [
     { size: "S", width: 18.0, length: 28.0, sleeve: 15.1 },
     { size: "M", width: 20.0, length: 29.0, sleeve: 16.5 },
@@ -71,8 +67,6 @@ const adultTee: SizeChart = {
     { size: "XL", width: 24.0, length: 31.0, sleeve: 19.5 },
     { size: "2XL", width: 26.0, length: 32.0, sleeve: 21.0 },
     { size: "3XL", width: 28.0, length: 33.0, sleeve: 22.4 },
-    { size: "4XL", width: 30.0, length: 34.0, sleeve: 23.7 },
-    { size: "5XL", width: 32.0, length: 35.0, sleeve: 25.0 },
   ],
 };
 

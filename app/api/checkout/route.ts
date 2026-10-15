@@ -4,7 +4,7 @@ import {
   findVariationForSize,
   createPendingOrder,
   findOrCreateCustomer,
-  getWooPrice,
+  getWooVariationPrice,
   getTaxRates,
   calculateWooTax,
   type OrderLine,
@@ -137,7 +137,9 @@ export async function POST(request: Request) {
     // proceeds without tax if rates can't be loaded — logged server-side).
     let taxes: OrderTaxLine[] = [];
     try {
-      const prices = await Promise.all(lines.map((l) => getWooPrice(l.productId)));
+      const prices = await Promise.all(
+        lines.map((l) => getWooVariationPrice(l.productId, l.variationId)),
+      );
       const subtotalCents = lines.reduce(
         (sum, l, i) => sum + Math.round(prices[i] * 100) * l.qty,
         0,

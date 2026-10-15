@@ -72,6 +72,28 @@ export function formatPrice(n: number): string {
   return `$${n.toFixed(2)}`;
 }
 
+/**
+ * Size surcharges in CAD, matching WooCommerce variation prices.
+ * Base price (S–XL) lives in data/catalog.json.
+ */
+const SIZE_SURCHARGES: Record<Garment, Record<string, number>> = {
+  Tee: { "2XL": 1, "3XL": 2 },
+  Crew: { "2XL": 2, "3XL": 3 },
+  Hoodie: { "2XL": 2, "3XL": 3 },
+  "Cropped Hoodie": {},
+};
+
+/** Price for a product in a given size, including any size surcharge. */
+export function getPriceForSize(product: Product, size: string): number {
+  const surcharge = SIZE_SURCHARGES[product.garment]?.[size] ?? 0;
+  return Math.round((product.price + surcharge) * 100) / 100;
+}
+
+/** True when any size of this product carries a surcharge (for "From $X" display). */
+export function hasSizeSurcharges(product: Product): boolean {
+  return Object.keys(SIZE_SURCHARGES[product.garment] ?? {}).length > 0;
+}
+
 export function relatedProducts(p: Product, count = 4): Product[] {
   const sameLine = products.filter((x) => x.slug !== p.slug && x.line === p.line);
   const rest = products.filter((x) => x.slug !== p.slug && x.line !== p.line);

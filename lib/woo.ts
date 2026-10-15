@@ -142,6 +142,28 @@ export async function getWooPrice(productId: number): Promise<number> {
   return Number.isFinite(n) ? n : 0;
 }
 
+/**
+ * Fetch a variation's current price (dollars) from WooCommerce.
+ * Falls back to the parent product price when variationId is null.
+ */
+export async function getWooVariationPrice(
+  productId: number,
+  variationId: number | null,
+): Promise<number> {
+  if (variationId) {
+    try {
+      const v = (await wooFetch(
+        `/products/${productId}/variations/${variationId}`,
+      )) as { price?: string };
+      const n = parseFloat(v.price ?? "");
+      if (Number.isFinite(n) && n > 0) return n;
+    } catch {
+      // fall through to product price
+    }
+  }
+  return getWooPrice(productId);
+}
+
 /** A WooCommerce tax rate row. */
 export interface WooTaxRate {
   id: number;

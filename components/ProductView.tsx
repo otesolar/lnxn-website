@@ -6,6 +6,8 @@ import { useState } from "react";
 import { useCart } from "@/lib/cart";
 import {
   formatPrice,
+  getPriceForSize,
+  hasSizeSurcharges,
   productImages,
   relatedProducts,
   type Product,
@@ -49,6 +51,8 @@ export default function ProductView({ product }: { product: Product }) {
   const spec = getProductSpec(product.garment, product.audience);
   const chart = getSizeChart(product.garment, product.audience);
   const sizes = getSizes(product.garment, product.audience);
+  const sizePrice = getPriceForSize(product, size);
+  const showFrom = hasSizeSurcharges(product) && sizePrice === product.price;
   const colorways = getColorways(product.slug);
   const [colorName, setColorName] = useState<string>(
     () => defaultColorway(product.slug, imgs[0] ?? "")?.name ?? "",
@@ -112,7 +116,7 @@ export default function ProductView({ product }: { product: Product }) {
           </p>
           <h1 className="display mt-3 text-3xl md:text-5xl">{product.name}</h1>
           <p className="mt-4 text-2xl font-bold text-gold-light">
-            {formatPrice(product.price)}
+            {showFrom ? `From ${formatPrice(product.price)}` : formatPrice(sizePrice)}
           </p>
           <p className="mt-5 leading-relaxed text-white/65">
             {product.description?.trim() ||
@@ -198,7 +202,7 @@ export default function ProductView({ product }: { product: Product }) {
                     id: product.id,
                     name: product.name,
                     slug: product.slug,
-                    price: product.price,
+                    price: sizePrice,
                     image: gallery[0] ?? imgs[0] ?? "",
                     size,
                     color: colorName,
@@ -208,7 +212,7 @@ export default function ProductView({ product }: { product: Product }) {
               }
               className="btn btn-gold flex-1"
             >
-              Add to Cart — {formatPrice(product.price * qty)}
+              Add to Cart — {formatPrice(sizePrice * qty)}
             </button>
           </div>
           <p className="mt-3 text-xs text-smoke">
