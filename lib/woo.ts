@@ -326,6 +326,13 @@ export interface OrderTaxLine {
   amount: number;
 }
 
+/** A single shipping line to attach to the WooCommerce order. */
+export interface OrderShippingLine {
+  method_title: string;
+  /** Shipping cost in dollars as a string, e.g. "8.99". */
+  total: string;
+}
+
 /** Customer address collected on the storefront before order creation. */
 export interface CustomerInfo {
   email: string;
@@ -409,6 +416,7 @@ export async function createPendingOrder(
   customer: CustomerInfo,
   taxes: OrderTaxLine[] = [],
   customerId: number = 0,
+  shipping: OrderShippingLine[] = [],
 ): Promise<{
   id: number;
   order_key: string;
@@ -435,6 +443,10 @@ export async function createPendingOrder(
       tax_total: t.amount.toFixed(2),
       shipping_tax_total: "0.00",
       compound: false,
+    })),
+    shipping_lines: shipping.map((s) => ({
+      method_title: s.method_title,
+      total: s.total,
     })),
     line_items: lines.map((l) => ({
       product_id: l.productId,

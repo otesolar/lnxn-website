@@ -10,7 +10,10 @@ import {
   type OrderLine,
   type CustomerInfo,
   type OrderTaxLine,
+  type OrderShippingLine,
 } from "@/lib/woo";
+import { getCatalog } from "@/lib/catalog-server";
+import { calculateShipping, shippingMethodTitle } from "@/lib/shipping";
 
 interface CheckoutItem {
   id: number;
@@ -135,7 +138,9 @@ export async function POST(request: Request) {
 
     // Calculate tax from WooCommerce's configured rates (graceful: order
     // proceeds without tax if rates can't be loaded — logged server-side).
+    // Shipping is included in the taxable amount (GST/RST apply to delivery).
     let taxes: OrderTaxLine[] = [];
+    let shippingLines: OrderShippingLine[] = [];
     try {
       const prices = await Promise.all(
         lines.map((l) => getWooVariationPrice(l.productId, l.variationId)),
@@ -144,10 +149,35 @@ export async function POST(request: Request) {
         (sum, l, i) => sum + Math.round(prices[i] * 100) * l.qty,
         0,
       );
+
+      // Flat-rate shipping based on the products in the cart.
+      const catalog = await getCatalog();
+      const shippingItems = lines.map((l, i) => {
+        const product = catalog.find((p) => p.id === l.productId);
+        return {
+          product: product ?? {
+            id: l.productId,
+            garment: "Tee",
+          } as unknown as (typeof catalog)[number],
+          qty: l.qty,
+          unitPrice: prices[i],
+        };
+      });
+      const shippingCost = calculateShipping(shippingItems);
+      const shippingCents = Math.round(shippingCost * 100);
+      if (shippingCents > 0) {
+        shippingLines = [
+          {
+            method_title: shippingMethodTitle(shippingCost),
+            total: shippingCost.toFixed(2),
+          },
+        ];
+      }
+
       const rates = await getTaxRates();
       const breakdown = calculateWooTax(
         rates,
-        subtotalCents,
+        subtotalCents + shippingCents,
         customer.country,
         customer.state,
       );
@@ -172,7 +202,7 @@ export async function POST(request: Request) {
     // customer_id makes WooCommerce require that customer to be logged in
     // to pay, which breaks our guest payment flow.
     await findOrCreateCustomer(customer).catch(() => {});
-    const order = await createPendingOrder(lines, customer, taxes, 0);
+    const order = await createPendingOrder(lines, customer, taxes, 0, shippingLines);
     return NextResponse.json({ payment_url: order.payment_url });
   } catch (err) {
     // Log the detail server-side; the customer only gets a friendly message.

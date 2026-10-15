@@ -4,7 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/lib/cart";
-import { formatPrice } from "@/lib/catalog";
+import { formatPrice, products } from "@/lib/catalog";
+import { calculateShipping, SHIPPING_RATES } from "@/lib/shipping";
 import { getRegionsForCountry } from "@/lib/regions";
 
 const COUNTRIES = [
@@ -47,6 +48,21 @@ const labelCls =
 
 export default function CartDrawer() {
   const { items, count, subtotal, isOpen, closeCart, removeItem, setQty } = useCart();
+
+  // Estimated flat-rate shipping based on cart contents (client-side preview;
+  // the checkout API recalculates authoritatively from WooCommerce prices).
+  const shippingEstimate = (() => {
+    const shippingItems = items
+      .map((i) => {
+        const product = products.find((p) => p.id === i.id);
+        if (!product) return null;
+        return { product, qty: i.qty, unitPrice: i.price };
+      })
+      .filter((x): x is NonNullable<typeof x> => x !== null);
+    if (shippingItems.length === 0) return 0;
+    return calculateShipping(shippingItems);
+  })();
+  const freeShippingRemaining = SHIPPING_RATES.FREE_THRESHOLD - subtotal;
   const [placing, setPlacing] = useState(false);
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
   const [step, setStep] = useState<"cart" | "details">("cart");
@@ -247,8 +263,19 @@ export default function CartDrawer() {
                   <span className="uppercase tracking-[0.2em] text-smoke">Subtotal</span>
                   <span className="font-bold">{formatPrice(subtotal)}</span>
                 </div>
+                <div className="mt-2 flex justify-between text-sm">
+                  <span className="uppercase tracking-[0.2em] text-smoke">Shipping</span>
+                  <span className="font-bold">
+                    {shippingEstimate === 0 ? "Free" : formatPrice(shippingEstimate)}
+                  </span>
+                </div>
+                {freeShippingRemaining > 0 && (
+                  <p className="mt-1 text-xs text-gold-light">
+                    Add {formatPrice(freeShippingRemaining)} more for free shipping
+                  </p>
+                )}
                 <p className="mt-1 text-xs text-smoke">
-                  Shipping & taxes calculated at checkout.
+                  Taxes calculated at checkout.
                 </p>
                 <button
                   onClick={goToDetails}
@@ -433,6 +460,12 @@ export default function CartDrawer() {
               <div className="flex justify-between text-sm">
                 <span className="uppercase tracking-[0.2em] text-smoke">Subtotal</span>
                 <span className="font-bold">{formatPrice(subtotal)}</span>
+              </div>
+              <div className="mt-2 flex justify-between text-sm">
+                <span className="uppercase tracking-[0.2em] text-smoke">Shipping</span>
+                <span className="font-bold">
+                  {shippingEstimate === 0 ? "Free" : formatPrice(shippingEstimate)}
+                </span>
               </div>
               <button
                 onClick={handlePlaceOrder}
