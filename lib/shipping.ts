@@ -29,6 +29,8 @@ export function calculateShipping(
   let totalUnits = 0;
   for (const { product, qty } of items) {
     totalUnits += qty;
+    // Kids' items always ship at the tee/kids tier, regardless of garment.
+    if (product.audience === "Kids") continue;
     if (product.garment === "Cropped Hoodie") {
       highestTier = SHIPPING_RATES.CROPPED;
     } else if (
