@@ -445,6 +445,7 @@ export async function createPendingOrder(
       compound: false,
     })),
     shipping_lines: shipping.map((s) => ({
+      method_id: "flat_rate",
       method_title: s.method_title,
       total: s.total,
     })),
